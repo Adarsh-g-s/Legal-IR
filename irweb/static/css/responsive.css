@@ -1,0 +1,247 @@
+/*
+	Project Name : Directin
+	Author Company : Ewebcraft
+	Project Date: 01 Aug , 2016
+	Author Website : http://www.ewebcraft.com
+	Author Email : ewebcraft@gmail.com
+*/
+
+@media (max-width:767px)
+{
+	#main-banner
+	{
+		background-attachment:inherit !important;
+	}
+	.noresponsive-padding
+	{
+		padding:0px;
+	}
+	.no-padding
+	{
+		padding:0px;
+	}
+	#left-header,#right-header,#logo
+	{
+		text-align:center !important;
+	}
+	#left-header
+	{
+		margin-bottom:5px;
+	}
+	#icons-list a
+	{
+		display:block;
+		text-align:left !important;
+		margin:2px 0px;
+		line-height:30px;
+	}
+	#search-input select.form-control,#search-input input.form-control
+	{
+		margin-bottom:5px;
+		border-right:none;
+		border-radius:4px;
+	}
+	#search-button
+	{
+		text-align:center;
+		margin-top:15px;
+	}
+	#main-banner-text p
+	{
+		font-size:14px;
+	}
+	#main-banner-text h1,#visited-categories h1
+	{
+		font-size:16px;
+	}
+	#visited-categories
+	{
+		padding:20px 0px;
+	}
+	.categories-boxes,.categories-list,.categories-list1
+	{
+		display:block;
+	}
+	#categories-heading h1,#feature-listings-heading h1,#easy-search-heading h1,#recent-listings-heading h1,#pricing-plan-heading h1
+	{
+		font-size:15px;
+	}
+	#categories-heading h1
+	{
+		margin-bottom:60px !important;
+	}
+	.search-steps
+	{
+		width:auto;
+		margin-bottom:10px;
+	}
+	.seperator
+	{
+		display:none;
+	}
+	.nopadding-right,.nopadding-left
+	{
+		padding:0px;
+	}
+	.prefooter-heading
+	{
+		margin-top:20px;
+	}
+	.categories-boxes a
+	{
+		width:100%;
+	}
+	#apartment-heading h1
+	{
+		font-size:16px;
+	}
+	#apartment-heading h1 span
+	{
+		margin-top:15px;
+	}
+	.listings-images
+	{
+		margin-right:0px;
+	}
+	#listings-tags p span
+	{
+		margin-left:7px;
+	}
+	#listings-tags p i.fa
+	{
+		margin-right:4px;
+	}
+	.reviews-section-text p
+	{
+		font-size:14px;
+		line-height:20px;
+	}
+	.jx-countup::after{
+		border-right:none !important;
+	}
+	#user-option
+	{
+		height:auto !important;
+	}
+	.price-table.active
+	{
+		position:relative !important;
+	}
+	.file-input
+	{
+		text-align:center  !important;
+	}
+	.jx-countup{
+		margin-bottom:30px;
+	}
+	#user-option .form-group
+	{
+		margin-bottom:15px;
+	}
+	.inner-addon .form-control
+	{
+		padding-left:25px !important;
+	}
+	.search-categories-box
+	{
+		padding-top:0px !important;
+	}
+	.contact-heading{
+		margin-top:30px;
+	}
+	#left-header h1 br{
+		display:block !important;
+	}
+}
+
+@media (max-width:1024px)
+{
+	.categories-boxes,.categories-list,.categories-list1,.feature-boxes-container,.price-table
+	{
+		margin-bottom:10px;
+	}
+	#search-categories-boxes1,#feature-box1,.listing-boxes1,.feature-box1
+	{
+		padding-top:0px;
+	}
+	#search-categories-boxes
+	{
+		padding-top:0px !important;
+	}
+	.listings-images1
+	{
+		width:49% !important;
+	}
+	#process
+	{
+		position:relative !important;
+		width:100% !important;
+	}
+}
+
+
+@media (min-width:768px) and (max-width:1024px)
+{
+	#icons-list a
+	{
+		margin-left:8px;
+	}
+	#search-button button
+	{
+		padding:10px 40px;
+	}
+	#search-input .form-control
+	{
+		font-size:14px;
+	}
+	.categories-list ul li,.categories-list1 ul li
+	{
+		font-size:12px;
+	}
+	.feature-boxes-container .feature-box-text a h3
+	{
+		font-size:14px;
+	}
+	.search-steps
+	{
+		width:210px;
+	}
+	.seperator hr
+	{
+		width:13%;
+	}
+	.price-list p
+	{
+		font-size:15px;
+	}
+	#search-input select.form-control,#search-input input.form-control
+	{
+		padding-left:10px !important;
+	}
+	#icons-list a i.fa{
+		margin-right:12px !important;
+	}
+	#search-categories button{
+		padding:10px 6px !important;
+	}
+	#categories-heading
+	{
+		margin-bottom:30px;
+	}
+}
+
+@media(min-width:1024px) and (max-width:1024px)
+{
+	.search-steps
+	{
+		width:280px !important;
+	}
+	.seperator hr
+	{
+		width:11% !important;
+	}
+	.listing-boxes-text
+	{
+		padding:10.5px 25px;
+	}
+}
