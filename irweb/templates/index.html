@@ -60,7 +60,7 @@
                         <div id="search-input">
 
                             <div class="col-sm-12 nopadding">
-                                <input type="text" list="location" name="location" class="form-control" placeholder="Search Query" pattern="[A-Za-z]{2, }">
+                                <input type="text" name="query" class="form-control" placeholder="Search Query">
 
 
                             </div>
@@ -103,125 +103,43 @@
             <div class="col-sm-12 text-center">
 
                 <div id="feature-box">
-                    <div class="col-sm-12 col-md-12">
+                    {% for result in results %}
+                         <div class="col-sm-12 col-md-12">
                         <div class="feature-boxes-container">
                              <div class="feature-box-text">
                                 <h2>
 
                                         <span>
                                             <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-empty"></i>
-                                            4.5
+{#                                            <i class="fa fa-star"></i>#}
+{#                                            <i class="fa fa-star"></i>#}
+{#                                            <i class="fa fa-star-half-empty"></i>#}
+
+                                           {{ result.relevantScore }}
                                         </span>
                                 </h2>
-                                <a href="#"><h3> Lorem Ipsum has been the industry</h3></a>
-                                <p> is simply dummy text of the printing and typesetting industry.
-                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum h
-                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum his simply dummy text of the printing and typesetting industry. Lorem Ipsum h
-                                    Lorem Ipsum has been the industry is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'</p>
+                                <a href="{{ result.path }}" target="_blank"><h3> {{ result.title }}</h3></a>
+                                <p> {{ result.summary }}</p>
 
                             </div>
                         </div>
                     </div>
                     <div class="clearfix"></div>
 
-                    <div class="col-sm-12 col-md-12">
-                        <div class="feature-boxes-container">
-                            <div class="feature-box-text">
-                                <h2>
-
-                                        <span>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-empty"></i>
-                                            4.5
-                                        </span>
-                                </h2>
-                                <a href="#"><h3> Lorem Ipsum has been the industry</h3></a>
-                                <p> is simply dummy text of the printing and typesetting industry.
-                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum h
-                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum his simply dummy text of the printing and typesetting industry. Lorem Ipsum h
-                                    Lorem Ipsum has been the industry is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'</p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-sm-12 col-md-12">
-                        <div class="feature-boxes-container">
-                            <div class="feature-box-text">
-                                <h2>
-
-                                        <span>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-empty"></i>
-                                            4.5
-                                        </span>
-                                </h2>
-                                <a href="#"><h3> Lorem Ipsum has been the industry</h3></a>
-                                <p> is simply dummy text of the printing and typesetting industry.
-                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum h
-                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum his simply dummy text of the printing and typesetting industry. Lorem Ipsum h
-                                    Lorem Ipsum has been the industry is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'</p>
-
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-
-                <div class="clearfix"></div>
-                <div class="col-sm-12 col-md-12">
-                    <div class="feature-boxes-container">
-                        <div class="feature-box-text">
-                            <h2>
-
-                                        <span>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-empty"></i>
-                                            4.5
-                                        </span>
-                            </h2>
-                            <a href="#"><h3> Lorem Ipsum has been the industry</h3></a>
-                            <p> is simply dummy text of the printing and typesetting industry.
-                                is simply dummy text of the printing and typesetting industry. Lorem Ipsum h
-                                is simply dummy text of the printing and typesetting industry. Lorem Ipsum his simply dummy text of the printing and typesetting industry. Lorem Ipsum h
-                                Lorem Ipsum has been the industry is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'</p>
-
-                        </div>
-                    </div>
-                </div>
 
 
-                <div class="clearfix"></div>
-                <div class="col-sm-12 col-md-12">
-                    <div class="feature-boxes-container">
-                        <div class="feature-box-text">
-                            <h2>
+                    {% endfor %}
 
-                                        <span>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-empty"></i>
-                                            4.5
-                                        </span>
-                            </h2>
-                            <a href="#"><h3> Lorem Ipsum has been the industry</h3></a>
-                            <p> is simply dummy text of the printing and typesetting industry.
-                                is simply dummy text of the printing and typesetting industry. Lorem Ipsum h
-                                is simply dummy text of the printing and typesetting industry. Lorem Ipsum his simply dummy text of the printing and typesetting industry. Lorem Ipsum h
-                                Lorem Ipsum has been the industry is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'</p>
 
-                        </div>
-                    </div>
-                </div>
+
+{#                    {% for  result in results %}#}
+
+
+
+{#                    {% endfor %}#}
+
+
+
 
             </div>
 
@@ -246,7 +164,24 @@
 <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.bxslider-rahisified.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename='js/custom.js') }}"></script>
 
+<script type="text/javascript">
+      $(function() {
+           $('#search').click(function() {
 
+        $.ajax({
+            url: '/sysone/home',
+            data: $('form').serialize(),
+            type: 'POST',
+            success: function(response) {
+                {#console.log(response);#}
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+         });
+      });
+  </script>
 
 </body>
 </html>
