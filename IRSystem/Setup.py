@@ -196,7 +196,7 @@ while (True):
         print(query)
         
 #         rankingModel = scoring.BM25F(B=0.75,K1=1.5)
-        with indexReader.searcher(weighting=scoring.BM25F(B=0.75, K1=1.5)) as searcher:
+        with indexReader.searcher(weighting=scoring.BM25F(B=0.75,K1=1.2)) as searcher:
 #             results=searcher.search(query, terms = True)
             pageNumber = 0
             rank = 0

@@ -4,7 +4,7 @@ import os
 import pathlib
 
 
-root = 'D:/Projects/Legal_IR/Doc_Dump/Docs'
+root = 'C:/Users/adars/Downloads/Temp/Docs/Test'
 
 for path, subdirs, files in os.walk(root):
     for name in files:
@@ -34,8 +34,10 @@ for path, subdirs, files in os.walk(root):
             os.makedirs(newPath)
 
 
-
-        parsedHtmlFilename = ("%s/%s.html" % (newPath,name))
+        #name = 1.json, remove file name after "."
+        position=name.index('.')
+        fileName = name[:position]
+        parsedHtmlFilename = ("%s/%s.html" % (newPath,fileName))
         f = open(parsedHtmlFilename, 'w',encoding="utf8")
         #print(parsedHtmlFilename)
 
