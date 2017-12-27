@@ -58,7 +58,11 @@ class Search:
         print()
         print(rank)
         print("Relevance Score: ",found.score)
-        print("Title: ",found['title'])
+        #Title could be longer than a line, split and display
+        title = found['title']
+        title = title.split(';',maxsplit=2)
+#         print("Title: ",found['title'])
+        print("Title: ", title[0]+ "...")
         print(found['path'])
         summary = found.highlights('contents')
         summary = summary.encode('utf-8')
