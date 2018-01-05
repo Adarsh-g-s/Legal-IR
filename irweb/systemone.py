@@ -58,21 +58,21 @@ class Search:
         summary = summary.encode('utf-8')
         print("Summary: ", summary)
 
-    def showResults(self, query, pageNumber, rank):
-        pageNumber += 1
+    def showResults(self, query, pageNumber,pageLength):
+        # pageNumber += 1
         search = Search()
         root_path = os.path.abspath(os.path.dirname(__file__))
         indexDirectory = os.path.join(root_path, "index")
         indexReader = open_dir(indexDirectory)
         searcher = indexReader.searcher(weighting=scoring.BM25F(B=0.75, K1=1.5))
-        results = searcher.search_page(query, pageNumber)
+        results = searcher.search_page(query,pageNumber,pagelen=pageLength)
+        # results = searcher.search(query, limit=100)
+        # results = searcher.search_page(query, 1)
 
         return results
 
     def getIndexDirectory(self):
-       'Location of the index folder'
-       currentDirectory = os.getcwd()
-       # creating an index directory
+
        root_path = os.path.abspath(os.path.dirname(__file__))
        indexDirectory = os.path.join(root_path, "index")
        if not os.path.exists(indexDirectory):
@@ -81,7 +81,7 @@ class Search:
        return indexDirectory
 
     @staticmethod
-    def passingQuery(queryInput):
+    def passingQuery(queryInput,pageNumber,pageLength):
 
         search = Search()
         root_path = os.path.abspath(os.path.dirname(__file__))
@@ -94,11 +94,11 @@ class Search:
         # rankingModel = scoring.BM25F(B=0.75,K1=1.5)
         with indexReader.searcher(weighting=scoring.BM25F(B=0.75, K1=1.5)) as searcher:
             #     results=searcher.search(query, terms = True)
-            pageNumber = 0
-            rank = 0
-            totalNumberOfPages = int(len(searcher.search(query)) / 10)
+            # pageNumber = 0
+            # rank = 0
+            # totalNumberOfPages = int(len(searcher.search(query)) / 10)
             # pageNumber, rank = search.showResults(query, pageNumber, rank)
-            return search.showResults(query, pageNumber, rank)
+            return search.showResults(query, pageNumber,pageLength)
 
 
 

@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>IR Project</title>
-    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 
     <!-- Style Sheets -->
@@ -18,9 +17,18 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/loader.css') }}">
 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/general.css') }}">
+
+
     <!-- Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 
+    <style type="text/css">
+        {#.dataTables_filter,.dataTables_info,.dataTables_length { display: none; }#}
+        .dataTables_filter, .dataTables_length, .dataTables_wrapper thead {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -30,18 +38,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-9 text-right">
-                <nav class="navbar navbar-default">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#thrift-1" aria-expanded="false">
-                            <span class="sr-only">Toggle Navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
 
-                </nav>
             </div>
         </div>
     </div>
@@ -54,26 +51,25 @@
         <div class="row">
             <div class="col-sm-12">
 
-                 <form class="review-form"  method="post" action="">
+                {#                <form class="review-form" method="post" action="">#}
 
-                    <div class="col-sm-9 col-md-10 nopadding">
-                        <div id="search-input">
+                <div class="col-sm-9 col-md-10 nopadding">
+                    <div id="search-input">
 
-                            <div class="col-sm-12 nopadding">
-                                <input type="text" name="query" class="form-control" placeholder="Search Query">
-
-
-                            </div>
-
+                        <div class="col-sm-12 nopadding">
+                            <input type="text" name="query" id="query" class="form-control" placeholder="Search Query">
 
                         </div>
+
+
                     </div>
-                    <div class="col-sm-3 col-md-2 text-right nopadding-right">
-                        <div id="search-button">
-                            <button type="submit" id="search"><i class="fa fa-search"></i>Search</button>
-                        </div>
+                </div>
+                <div class="col-sm-3 col-md-2 text-right nopadding-right">
+                    <div id="search-button">
+                        <button type="submit" id="search"><i class="fa fa-search"></i>Search</button>
                     </div>
-                </form>
+                </div>
+                {#                </form>#}
             </div>
         </div>
     </div>
@@ -99,55 +95,29 @@
 <!-- start feature listings-->
 <div id="feature-listings">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12 text-center">
+        <table id="dataTableId" cellspacing="0" width="100%" class="display">
+            <thead>
+            <tr>
+                <th></th>
+            </tr>
+            </thead>
 
-                <div id="feature-box">
-                    {% for result in results %}
-                         <div class="col-sm-12 col-md-12">
-                        <div class="feature-boxes-container">
-                             <div class="feature-box-text">
-                                <h2>
 
-                                        <span>
-                                            <i class="fa fa-star"></i>
-{#                                            <i class="fa fa-star"></i>#}
-{#                                            <i class="fa fa-star"></i>#}
-{#                                            <i class="fa fa-star-half-empty"></i>#}
+            <div class="row">
+                <div class="col-sm-12 text-center">
 
-                                           {{ result.relevantScore }}
-                                        </span>
-                                </h2>
-                                <a href="{{ result.path }}" target="_blank"><h3> {{ result.title }}</h3></a>
-                                <p> {{ result.summary }}</p>
+                    <div id="feature-box">
+                        <tbody>
 
-                            </div>
-                        </div>
+                        </tbody>
                     </div>
+
                     <div class="clearfix"></div>
 
 
-
-                    {% endfor %}
-
-
-
-{#                    {% for  result in results %}#}
-
-
-
-{#                    {% endfor %}#}
-
-
-
-
+                </div>
             </div>
-
-            <div class="clearfix"></div>
-
-
-            </div>
-        </div>
+        </table>
     </div>
 </div>
 <!-- end feature listings-->
@@ -156,32 +126,48 @@
 
 <!-- Scripts -->
 
-<script type="text/javascript" src="{{ url_for('static',filename='js/wow.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename='js/jquery-1.11.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static',filename='js/waypoints.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static',filename='js/jquery.counterup.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static',filename='js/jquery.bxslider-rahisified.min.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static',filename='js/custom.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/table/jquery.dataTables.min.js') }}"></script>
+
 
 <script type="text/javascript">
-      $(function() {
-           $('#search').click(function() {
+    $(document).ready(function () {
+        $('#search').click(function () {
+            oTable = $('#dataTableId').dataTable({
+                serverSide: true,
+                destroy: true,
+                filter: true,
+                paginate: true,
+                processing: true,
+                ajax: {
+                    url: "/ir/sysone/query",
+                    type: 'GET',
+                    data: function (d) {
+                        d.filter = "yes",
+                            d.query = $("#query").val()
+                    }
+                },
+                columns: [
+                    {
+                        data: null,
+                        render: function (data, type, row, meta) {
+                            console.log(row["relevantScore"])
+                            return '<div class="col-sm-12 col-md-12"><div class="feature-boxes-container"><div class="feature-box-text"><h2><span><i class="fa fa-star"></i>' + row["relevantScore"].toFixed(2) + '</span></h2><a href="' + row["path"] + '" target="_blank"><h3>' + row["title"] + '</h3></a><p>' + row["summary"] + '</p></div></div></div><div class="clearfix"></div>'
 
-        $.ajax({
-            url: '/sysone/home',
-            data: $('form').serialize(),
-            type: 'POST',
-            success: function(response) {
-                {#console.log(response);#}
-            },
-            error: function(error) {
-                console.log(error);
-            }
+
+                        }
+
+                    }
+                ]
+
+            });
+
         });
-         });
-      });
-  </script>
+
+
+    });
+</script>
 
 </body>
 </html>

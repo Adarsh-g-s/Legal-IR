@@ -1,41 +1,58 @@
-from flask import Flask, render_template,json ,request
+from flask import Flask, render_template, jsonify, request
 import os
 from systemone import *
-
 
 app = Flask(__name__)
 
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
-
-@app.route('/ir/sysone/home')
+@app.route('/', methods=['GET'])
+@app.route('/ir/sysone/home', methods=['GET'])
 def showsystemonehome():
+    return render_template('index.html')
 
-     return render_template('index.html')
 
-@app.route('/ir/sysone/home',methods=['POST'])
-def systemonehome():
-    _query = request.form['query']
+@app.route('/ir/sysone/query', methods=['GET'])
+def systemhome():
+    start = request.args.get('start', default=1, type=int)
+    length = request.args.get('length', default=10, type=int)
+    filter = request.args.get('filter', default="no", type=str)
+    draw = request.args.get('draw', default=1, type=int)
+    query = request.args.get('query', type=str)
+
+    if start == 10:
+        start = 1;
+
+    if start > 10:
+        start = start // length
+
+    start = start + 1;
     search = Search()
-    response = search.passingQuery(_query)
+    response = search.passingQuery(query, start, length)
 
     outputs = [];
 
     for found in response:
         summary = found.highlights('contents')
-        # summary = summary.decode('utf-8')
+        title = found['title']
+        title = title.split(';', maxsplit=2) #should it be too longer than a line
         result = {
             'relevantScore': found.score,
-            'title': found['title'],
+            'title': title[0], #just pick the first element
             'path': found['path'],
             'summary': summary
         }
 
         outputs.append(result)
 
-    return render_template('index.html', results=outputs)
+    finalout = {
+        'data': outputs,
+        'draw': draw,
+        'recordsTotal': len(response),
+        'recordsFiltered': len(response)
+    }
+
+    return jsonify(finalout)
+
 
 @app.route('/ir/systemtwo/home')
 def showsystemtwohome():
