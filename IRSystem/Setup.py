@@ -111,16 +111,16 @@ class Setup:
         fileContents = open(filePath, "r", encoding="utf8")
         htmlTitle = BeautifulSoup(fileContents,"html.parser")
         if htmlTitle.find('h1'):
-            try:
+#             try:
                 htmlTitle = htmlTitle.find('h1').get_text()
-            except:
-                htmlTitle = "No Title found!"
-        else:
-            try: 
+#             except:
+#                 htmlTitle = "No Title found!"
+        elif htmlTitle.find('p', class_ = "parties"):
+#             try: 
                   htmlTitle=htmlTitle.find('p', class_ = "parties").get_text()
 #                   print(htmlTitle)
-            except:
-                htmlTitle = "No Title found!"
+#             except:
+#                 htmlTitle = "No Title found!"
         return htmlTitle
     
     def getContentsOfHtmlFiles(self, filePath):
