@@ -17,6 +17,7 @@ from whoosh.index import open_dir
 from whoosh import qparser
 from whoosh import scoring
 from whoosh.scoring import Weighting
+from whoosh.highlight import highlight, WholeFragmenter
 
 class Indexer:
     '''
@@ -64,13 +65,16 @@ class Search:
 #         print("Title: ",found['title'])
         print("Title: ", title[0]+ "...")
         print(found['path'])
-        summary = found.highlights('contents')
+        summary = found.highlights('contents',top=10)
         summary = summary.encode('utf-8')
         print("Summary: ",summary)
         
     def showResults(self,query,pageNumber,rank):
         pageNumber+=1
+        'Adarsh changes'
         results = searcher.search_page(query, pageNumber)
+        #results = searcher.search(query)
+        #results.fragmenter = highlight.WholeFragmenter()
         print("Showing ", results.scored_length()," out of ", len(results), "results")
         #         print(results)
                 
@@ -82,8 +86,7 @@ class Search:
     def wantNextPageResults(self):
         print("\n To see next page results \n press Y or y else press N or n")
         return input(" Enter your choice: ")
-        
-
+    
 class Setup:
     '''
     Take document path as the user input and pass it to Indexer for Indexing
@@ -182,6 +185,7 @@ while (True):
     #create the index writer
         indexWriter = indexFolder.writer()
         
+        #setup.getPathTitleAndContents(directory,indexer)
         setup.getPathTitleAndContents(directory,indexer)
         
         indexWriter.commit()
