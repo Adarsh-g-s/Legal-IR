@@ -181,7 +181,11 @@ while (True):
     #The schema specifies the fields of documents in an index.
         schema = indexer.getSchema()
        
-        indexFolder = index.create_in(indexDirectory, schema)
+        #Check if an index folder exists, if it does not then create else use existing one.
+        if not os.path.exists(indexDirectory):
+            indexFolder = index.create_in(indexDirectory, schema)
+        else:
+            indexFolder = index.open_dir(indexDirectory)
     #create the index writer
         indexWriter = indexFolder.writer()
         
