@@ -93,7 +93,7 @@ class Setup:
     Take document path as the user input and pass it to Indexer for Indexing
     '''
 
-    def __init__(self, documentPath, filePath, htmlFileContents,fileTitle, choice, indexDirectory):
+    def __init__(self, documentPath, filePath, htmlFileContents,fileTitle, choice, indexDirectory, indexName):
         '''
         Constructor
         '''
@@ -103,6 +103,7 @@ class Setup:
         self.fileTitle = fileTitle
         self.choice = choice
         self.indexDirectory = indexDirectory
+        self.indexName = indexName
     
     def userInput(self):
         print("\n Enter \n 1. Index \n 2. Search \n 3. Exit")
@@ -166,7 +167,7 @@ class Setup:
                 else:
                     print("File is in a format other than html")
                     
-setup = Setup(documentPath = None, filePath = None, htmlFileContents= None, fileTitle = None, choice = None, indexDirectory=None)
+setup = Setup(documentPath = None, filePath = None, htmlFileContents= None, fileTitle = None, choice = None, indexDirectory=None, indexName = None)
 
 while (True):
     indexDirectory = setup.getIndexDirectory()
