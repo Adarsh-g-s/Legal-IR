@@ -5,6 +5,7 @@ Created on Dec 14, 2017
 '''
 from bs4 import BeautifulSoup
 import os
+from glob2 import glob, iglob
 from lxml import html
 
 from whoosh.fields import *
@@ -92,7 +93,7 @@ class Setup:
     Take document path as the user input and pass it to Indexer for Indexing
     '''
 
-    def __init__(self, documentPath, filePath, htmlFileContents,fileTitle, choice, indexDirectory):
+    def __init__(self, documentPath, filePath, htmlFileContents,fileTitle, choice, indexDirectory, indexName):
         '''
         Constructor
         '''
@@ -102,6 +103,7 @@ class Setup:
         self.fileTitle = fileTitle
         self.choice = choice
         self.indexDirectory = indexDirectory
+        self.indexName = indexName
     
     def userInput(self):
         print("\n Enter \n 1. Index \n 2. Search \n 3. Exit")
@@ -165,8 +167,7 @@ class Setup:
                 else:
                     print("File is in a format other than html")
                     
-setup = Setup(documentPath = None, filePath = None, htmlFileContents= None, fileTitle = None, choice = None, indexDirectory=None)
-
+setup = Setup(documentPath = None, filePath = None, htmlFileContents= None, fileTitle = None, choice = None, indexDirectory=None, indexName = None)
 while (True):
     indexDirectory = setup.getIndexDirectory()
     setup.userInput()
@@ -181,7 +182,8 @@ while (True):
     #The schema specifies the fields of documents in an index.
         schema = indexer.getSchema()
        #Check if an index folder exists, if it does not then create else use existing one.
-        if not os.path.exists(indexDirectory):
+        setup.indexName = glob(indexDirectory+"/"+'**')
+        if not (os.path.exists(indexDirectory) and setup.indexName):
             indexFolder = index.create_in(indexDirectory, schema)
         else:
             indexFolder = index.open_dir(indexDirectory)

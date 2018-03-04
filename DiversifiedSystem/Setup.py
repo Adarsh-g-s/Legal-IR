@@ -5,6 +5,7 @@ Created on Feb 27, 2018
 '''
 from bs4 import BeautifulSoup
 import os
+from glob2 import glob, iglob
 from lxml import html
 
 from whoosh.fields import *
@@ -182,6 +183,7 @@ while (True):
         schema = indexer.getSchema()
        
         #Check if an index folder exists, if it does not then create else use existing one.
+        setup.indexName = glob(indexDirectory+"/"+'**')
         if not os.path.exists(indexDirectory):
             indexFolder = index.create_in(indexDirectory, schema)
         else:
