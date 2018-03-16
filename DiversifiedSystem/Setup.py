@@ -21,6 +21,7 @@ from whoosh import qparser
 from whoosh import scoring
 from whoosh.scoring import Weighting
 from whoosh.highlight import highlight, WholeFragmenter
+from Diversifier import Diversifier
 
 class Indexer:
     '''
@@ -224,7 +225,21 @@ while (True):
             pageNumber = 0
             rank = 0
             highestScore = 1
-            totalNumberOfPages = int(len(searcher.search(query))/10)
+
+            # Get all the search result with limit = None
+            immediateResult = searcher.search(query, limit = None)
+
+            # Prepare the list of document paths
+            docList = []
+            for hit in immediateResult:
+                docList.append(hit['path'])
+
+            # Pass the document path to the Diversifier
+            diversifier = Diversifier(docList)
+            k = 20
+            diverseResult = diversifier.findMostDiverse(k)
+
+            totalNumberOfPages = int(len(immediateResult)/10)
             pageNumber, rank, highestScore = search.showResults(query,pageNumber,rank,highestScore)
             
             while(True):
