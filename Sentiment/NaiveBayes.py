@@ -62,7 +62,7 @@ for i in range(0,65):
     baseline.corpus = baseline.dataPreProcessing(fileContents,baseline.corpus)
     #2. after that use classifier for training and testing.
     #sparse representation of counts for max 3000 words   
-    countVectorizer=CountVectorizer(max_features=3000)
+    countVectorizer=CountVectorizer(max_features=600)
     #return the term document matrix
     x=countVectorizer.fit_transform(baseline.corpus).toarray()
     #print(x)
