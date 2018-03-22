@@ -46,7 +46,7 @@ filePaths=dataset1.iloc[:,0].values
 
 baseline = Baseline(vocabulary = [],corpus= []) 
 #An array of file path is returned. Extract this file path one by one
-for i in range(0,65):
+for i in range(0,118):
     filePath = filePaths[i]
     #Visit the path and extract contents
     baseline.vocabulary = baseline.visitPath(filePath)
