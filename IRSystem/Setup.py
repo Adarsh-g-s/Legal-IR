@@ -3,6 +3,7 @@ Created on Dec 14, 2017
 
 @author: adarsh
 '''
+from __future__ import division
 from bs4 import BeautifulSoup
 import os
 from glob2 import glob, iglob
@@ -56,10 +57,16 @@ class Search:
         'Return the query parser with corresponding schema'
         return qparser.MultifieldParser(["title","contents"], schema=indexer.getSchema())
     
-    def getResults(self,found,rank):
+    def getResults(self,found,rank,highestScore):
         print()
         print(rank)
         print("Relevance Score: ",found.score)
+        #Store the first score and use it for normalization
+        if(rank == 1):
+            highestScore = found.score
+        
+        normalizedScore = found.score/highestScore
+        print("Normalized Relevance Score: ",normalizedScore)
         #Title could be longer than a line, split and display
         title = found['title']
         title = title.split(';',maxsplit=2)
@@ -69,8 +76,9 @@ class Search:
         summary = found.highlights('contents',top=10)
         summary = summary.encode('utf-8')
         print("Summary: ",summary)
+        return highestScore
         
-    def showResults(self,query,pageNumber,rank):
+    def showResults(self,query,pageNumber,rank,highestScore):
         pageNumber+=1
         'Adarsh changes'
         results = searcher.search_page(query, pageNumber)
@@ -81,8 +89,8 @@ class Search:
                 
         for found in results:
             rank+=1
-            search.getResults(found,rank)
-        return pageNumber,rank
+            highestScore = search.getResults(found,rank,highestScore)
+        return pageNumber,rank, highestScore
     
     def wantNextPageResults(self):
         print("\n To see next page results \n press Y or y else press N or n")
@@ -213,13 +221,14 @@ while (True):
 #             results=searcher.search(query, terms = True)
             pageNumber = 0
             rank = 0
+            highestScore = 1
             totalNumberOfPages = int(len(searcher.search(query))/10)
-            pageNumber, rank = search.showResults(query,pageNumber,rank)
+            pageNumber, rank, highestScore = search.showResults(query,pageNumber,rank,highestScore)
             
             while(True):
                 setup.choice = search.wantNextPageResults()
                 if setup.choice == 'Y' or setup.choice == 'y':
-                    pageNumber, rank = search.showResults(query,pageNumber,rank)
+                    pageNumber, rank,highestScore = search.showResults(query,pageNumber,rank,highestScore)
                 else:
                     break
             
