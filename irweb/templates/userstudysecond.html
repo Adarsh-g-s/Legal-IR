@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IR Project</title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+    <!-- Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/animate.css') }}" type="text/css">
+    <link href="{{ url_for('static',filename='css/hover-min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/jquery.bxslider.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main-styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/loader.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/general.css') }}">
+
+
+    <!-- Google Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+
+    <style type="text/css">
+        {#.dataTables_filter,.dataTables_info,.dataTables_length { display: none; }#}
+        .dataTables_filter, .dataTables_length, .dataTables_wrapper thead {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<!--start add listings inner header section-->
+
+<div id="add-listings-inner-header">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div class="inner-header-text">
+                    <a href=><span>DIVERSIFING SEARCH RESULTS IN LEGAL INFORMATION RETRIEVAL SYSTEM</span></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- start add listings-->
+<div id="add-listings">
+    <div class="container clear">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+
+                <!-- start listings-->
+                <div id="enter-listings">
+                    <h1>PART THREE : ( Introduction to the research tool )</h1>
+                    <hr>
+                    <form id="title-form" role="form" method="POST" action="">
+
+                        <div class="clearfix"></div>
+
+                            <div id="phone-section">
+                            <p>Getting familiar with the tool is quite simple as its user interface mirrors most of the popular search engines but with a narrow focus on controversial topics in legal discussion niche. The tool consist of different ways to judge
+                                the relevance of the documents to a given query.
+                                All the presentation will be the same as well as the result’s presentation layout which will be used for the questions after each task.
+                                For example, you can input the search term <b>abortion</b> in order to get some search results.
+                                </p>
+                                <p>Please especially take note of the following features of the research tool:</p>
+                                <ul>
+                                    <li>1.	The relevance of the first few results to your query</li>
+                                    <li>2.	The verdicts and arguments of the results in relevance to the query supplied. </li>
+                                <li>3.	The diversity of the opinions of the results.</li>
+                                </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                        <!-- end listings-->
+                    </form>
+                    <div>
+                        <img src="{{ url_for('static',filename='img/sample.png') }}">
+                    </div>
+
+                     <div id="preview-add">
+                                <button type="submit"  onclick="location.href='/ir/userstudy/3'" > Continue</button>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="clearfix"></div>
+
+<!-- Scripts -->
+
+<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-1.11.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/table/jquery.dataTables.min.js') }}"></script>
+
+
+</body>
+</html>

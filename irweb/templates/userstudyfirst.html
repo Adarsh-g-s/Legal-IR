@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IR Project</title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+    <!-- Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/animate.css') }}" type="text/css">
+    <link href="{{ url_for('static',filename='css/hover-min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/jquery.bxslider.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main-styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/loader.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/general.css') }}">
+
+
+    <!-- Google Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+
+    <style type="text/css">
+        {#.dataTables_filter,.dataTables_info,.dataTables_length { display: none; }#}
+        .dataTables_filter, .dataTables_length, .dataTables_wrapper thead {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<!--start add listings inner header section-->
+
+<div id="add-listings-inner-header">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div class="inner-header-text">
+                    <a href=><span>DIVERSIFING SEARCH RESULTS IN LEGAL INFORMATION RETRIEVAL SYSTEM</span></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- start add listings-->
+<div id="add-listings">
+    <div class="container clear">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+
+                <!-- start listings-->
+                <div id="enter-listings">
+                    <h1>PART TWO : ( SKILLS )</h1>
+                    <hr>
+                    <div id="title">
+
+                    </div>
+                    <form id="title-form" role="form" method="POST" action="/ir/userstudy/1">
+
+                        <div id="phone-section">
+                            <div class="col-sm-12 nopadding-left ">
+
+                              1.  What is your native language?
+                                <div class="form-group">
+
+                                    <label class="radio-inline"><input type="radio" name="language" value="Deutsch">Deutsch</label>
+                                    <label class="radio-inline"><input type="radio" name="language" value="English"> English</label>
+                                   <label class="radio-inline"><input type="radio" name="language" value="Others">Others</label>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                          <div id="phone-section">
+                                <div class="col-sm-12 nopadding-left">
+
+                               2.	How would you rate your proficiency in reading and understanding English?
+                                <div class="form-group">
+                                   Basic Skills
+                                    <label class="radio-inline"><input type="radio" name="proficiency" value="1">1</label>
+                                    <label class="radio-inline"><input type="radio" name="proficiency" value="2"> 2</label>
+                                    <label class="radio-inline"><input type="radio" name="proficiency" value="3"> 3</label>
+                                    <label class="radio-inline"><input type="radio" name="proficiency" value="4"> 4</label>
+                                    <label class="radio-inline"><input type="radio" name="proficiency" value="5"> 5</label>
+
+                                   Expert / Mother Tongue
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div id="phone-section">
+                            <div class="col-sm-12 nopadding-left ">
+
+                               3.	How frequently do you use web search engines (e.g. Google, Bing)?
+                                <div class="form-group">
+
+                                    <label class="radio-inline"><input type="radio" name="frequently" value="never">Never</label>
+                                    <label class="radio-inline"><input type="radio" name="frequently" value="monthly">Monthly</label>
+                                    <label class="radio-inline"><input type="radio" name="frequently" value="weekly">Weekly</label>
+                                    <label class="radio-inline"><input type="radio" name="frequently" value="daily once">Daily, Once</label>
+                                    <label class="radio-inline"><input type="radio" name="frequently" value="daily, several">Daily, several hours</label>
+
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+ <div id="phone-section">
+                                  <div class="col-sm-12 nopadding-left ">
+
+                            4.	How frequently do you search for legal documents/verdicts on any topics using search engines?
+                                <div class="form-group">
+
+                                      <label class="radio-inline"><input type="radio" name="frequently_legal" value="never">Never</label>
+                                    <label class="radio-inline"><input type="radio" name="frequently_legal" value="monthly">Monthly</label>
+                                    <label class="radio-inline"><input type="radio" name="frequently_legal" value="weekly">Weekly</label>
+                                    <label class="radio-inline"><input type="radio" name="frequently_legal" value="daily once">Daily, Once</label>
+                                    <label class="radio-inline"><input type="radio" name="frequently_legal" value="daily, several">Daily, several hours</label>
+
+
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                           <div id="phone-section">
+
+                          <div class="col-sm-12 nopadding-left ">
+
+                            5.	When researching legal cases, what existing tools and websites do you use?
+                                <div class="form-group">
+
+                                    <label class="radio-inline"><input type="radio" name="tool" value="eurolex">EuroLex</label>
+                                    <label class="radio-inline"><input type="radio" name="tool" value="usca">USCA</label>
+                                    <label class="radio-inline"><input type="radio" name="tool" value="google">Google Legal</label>
+                                    <label class="radio-inline"><input type="radio" name="tool" value="others">Others</label>
+                                    <label class="radio-inline"><input type="radio" name="tool" value="dont">I don't search for Legal cases</label>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+
+                             <div id="preview-add">
+                                <button type="submit" >Save and Continue</button>
+                            </div>
+                        <!-- end listings-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<!-- Scripts -->
+
+<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-1.11.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/table/jquery.dataTables.min.js') }}"></script>
+
+
+</body>
+</html>
