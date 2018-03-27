@@ -239,19 +239,26 @@ while (True):
             k = 20
             diverseResult = diversifier.findMostDiverse(k)
 
-            # Remove the top 'k' from the entire list
-            for fileName in diverseResult:
-                if fileName in docList: docList.remove(fileName)
+            # Remove the top 'k' from the entire list & add them at the beginning for the final list.
+            for fileName in reversed(diverseResult):
+                if fileName in docList:
+                    docList.remove(fileName)
 
-            totalNumberOfPages = int(len(immediateResult)/10)
-            pageNumber, rank, highestScore = search.showResults(query,pageNumber,rank,highestScore)
-            
-            while(True):
-                setup.choice = search.wantNextPageResults()
-                if setup.choice == 'Y' or setup.choice == 'y':
-                    pageNumber, rank,highestScore = search.showResults(query,pageNumber,rank,highestScore)
-                else:
-                    break
+                docList.insert(0, fileName)
+
+
+            #totalNumberOfPages = int(len(docList)/10)
+            #pageNumber, rank, highestScore = search.showResults(query,pageNumber,rank,highestScore)
+            print("\nFinal Result:")
+            for fileName in docList:
+                rank = rank + 1
+                print("\nRank#", rank, ": ", fileName)
+                if 0 == rank % 10:
+                    setup.choice = search.wantNextPageResults()
+                    if setup.choice == 'Y' or setup.choice == 'y':
+                        continue
+                    else:
+                        break
             
     else:
         exit()
