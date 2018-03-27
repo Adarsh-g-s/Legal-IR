@@ -239,6 +239,10 @@ while (True):
             k = 20
             diverseResult = diversifier.findMostDiverse(k)
 
+            # Remove the top 'k' from the entire list
+            for fileName in diverseResult:
+                if fileName in docList: docList.remove(fileName)
+
             totalNumberOfPages = int(len(immediateResult)/10)
             pageNumber, rank, highestScore = search.showResults(query,pageNumber,rank,highestScore)
             
