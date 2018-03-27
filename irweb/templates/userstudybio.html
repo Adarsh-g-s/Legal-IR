@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IR Project</title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+    <!-- Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/animate.css') }}" type="text/css">
+    <link href="{{ url_for('static',filename='css/hover-min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/jquery.bxslider.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main-styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/loader.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/general.css') }}">
+
+
+    <!-- Google Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+
+    <style type="text/css">
+        {#.dataTables_filter,.dataTables_info,.dataTables_length { display: none; }#}
+        .dataTables_filter, .dataTables_length, .dataTables_wrapper thead {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<!--start add listings inner header section-->
+
+<div id="add-listings-inner-header">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div class="inner-header-text">
+                    <a href=><span>DIVERSIFING SEARCH RESULTS IN LEGAL INFORMATION RETRIEVAL SYSTEM</span></a>
+                </div>
+                <p>This study consist of four (4) parts. The first part is a short bio-data form followed by the second part which is a questionnaire below while the research tool
+                    will be explained in the third part  textually and with a sample image. </p>
+                <p>In the fourth part, you will have three different tasks to carry out one after the other using the specified system and there
+                    will be short questionnaire after each of the task.
+                </p>
+                <p>
+                    The results of the study will only be used for research and the storage and evaluation of these results
+                    will be anonymous.
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <div class="inner-header-text">
+                        <h2><span>{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+                        </span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- start add listings-->
+<div id="add-listings">
+    <div class="container clear">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+
+                <!-- start listings-->
+                <div id="enter-listings">
+                    <h1>PART ONE - SHORT BIO </h1>
+                    <hr>
+                    <div id="title">
+
+                    </div>
+                    <form id="title-form" role="form" method="POST" action="/ir/userstudy">
+
+                        <div id="phone-section">
+                            <div class="col-sm-6 nopadding-left ">
+                                <div class="form-group">
+
+                                    <input type="text" id="occupation" name="occupation" class="form-control" placeholder="OCCUPATION">
+                                    <span class="help-block">
+                                        <strong></strong>
+                                    </span>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 nopadding-right">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <input id="username" type="text" class="form-control" name="age"
+                                               placeholder='AGE'>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div id="student-data"  style="display: none" >
+                            <div class="col-sm-6 nopadding-left ">
+                                <div class="form-group">
+
+                                    <input type="text" id="semester"  class="form-control" name="semester" placeholder="SEMESTER (IF STUDENT)">
+                                    <span class="help-block">
+                                        <strong></strong>
+                                    </span>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 nopadding-right">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <input id="course" type="text" class="form-control" name="course"
+                                               placeholder='COURSE OF STUDY (IF STUDENT)'>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="clearfix"></div>
+
+                        <div id="phone-section">
+
+
+                            <div class="col-sm-6 nopadding-left">
+
+                                <div class="form-group">
+                                    SEX:
+                                    <select class="form-control" name="sex" id="parentCategory">
+                                        <option value="MALE">FEMALE</option>
+                                        <option value="MALE">MALE</option>
+
+
+                                    </select>
+                                </div>
+
+                            </div>
+
+                        </div>
+                       <div class="clearfix"></div>
+
+                             <div id="preview-add">
+                                <button type="submit" >Save and Continue</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<!-- Scripts -->
+
+<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-1.11.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/table/jquery.dataTables.min.js') }}"></script>
+
+<script type="text/javascript">
+
+    $("#occupation").bind("change paste keyup", function() {
+        if($(this).val().toUpperCase() === 'STUDENT') {
+            document.getElementById('student-data').style.display = 'block';
+        }else{
+         document.getElementById('student-data').style.display = 'none';
+        }
+     });
+
+</script>
+</body>
+</html>

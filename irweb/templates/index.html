@@ -141,7 +141,7 @@
                 paginate: true,
                 processing: true,
                 ajax: {
-                    url: "/ir/sysone/query",
+                    url: "/ir/systemone/query",
                     type: 'GET',
                     data: function (d) {
                         d.filter = "yes",
@@ -152,8 +152,8 @@
                     {
                         data: null,
                         render: function (data, type, row, meta) {
-                            console.log(row["relevantScore"])
-                            return '<div class="col-sm-12 col-md-12"><div class="feature-boxes-container"><div class="feature-box-text"><h2><span><i class="fa fa-star"></i>' + row["relevantScore"].toFixed(2) + '</span></h2><a href="' + row["path"] + '" target="_blank"><h3>' + row["title"] + '</h3></a><p>' + row["summary"] + '</p></div></div></div><div class="clearfix"></div>'
+                            {#console.log(row["relevantScore"])#}
+                            return '<div class="col-sm-12 col-md-12"><div class="feature-boxes-container"><div class="feature-box-text"><h2><span><i class="fa fa-star"></i>' + row["relevantScore"].toFixed(2) + '</span></h2><a href="http://127.0.0.1:8887' + row["path"] + '" target="_blank"><h3>' + row["title"] + '</h3></a><p>' + row["summary"] + '</p></div></div></div><div class="clearfix"></div>'
 
 
                         }
