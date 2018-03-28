@@ -231,11 +231,13 @@ while (True):
 
             # Prepare the list of document paths
             docList = []
+            scoreList = []
             for hit in immediateResult:
                 docList.append(hit['path'])
+                scoreList.append(hit.score)
 
             # Pass the document path to the Diversifier
-            diversifier = Diversifier(docList)
+            diversifier = Diversifier(docList, scoreList)
             k = 20
             diverseResult = diversifier.findMostDiverse(k)
 

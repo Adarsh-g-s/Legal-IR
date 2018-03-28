@@ -2,8 +2,9 @@ from SemanticDistCalculator import SemanticDistCalculator
 
 class Diversifier(object):
     """This class is responsible for deversifying the set of documents."""
-    def __init__(self, originalResult):
-        self.originalResult = originalResult
+    def __init__(self, originalFileList, originalScoreList):
+        self.originalFileList = originalFileList
+        self.originalScoreList = originalFileList
         self.currentDoc = None
         self.prevDoc = None
         self.distListToCurrentDoc = None
@@ -16,13 +17,13 @@ class Diversifier(object):
         """ This function returns the most diverse set of documents starting from the most relevant document among the resultset. """
 
         docSetList = []
-        self.currentDoc = self.originalResult[0]
+        self.currentDoc = self.originalFileList[0]
         self.currentDocIndex = 0 # Starts with the most relevant doc
         docSetList.append(self.currentDoc) # Add the most relevant doc at first
         docCounter = 1
 
         self.semDistCalc = SemanticDistCalculator()
-        self.semDistCalc.learnVocabulary(self.originalResult)
+        self.semDistCalc.learnVocabulary(self.originalFileList)
         self.semDistCalc.calcDistMatrix()
 
         print( docCount, "Most diverse results:\n")
@@ -55,7 +56,7 @@ class Diversifier(object):
         # highIndex = self.distListToCurrentDoc.index(highDist)
         self.currentDocIndex = highIndex
         self.diverseDocSet.add(self.currentDocIndex)
-        return self.originalResult[self.currentDocIndex]
+        return self.originalFileList[self.currentDocIndex]
 
     def __findModerateFarthestDocIndex(self):
         tempOrigList = self.distListToCurrentDoc.tolist()
