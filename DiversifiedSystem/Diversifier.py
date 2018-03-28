@@ -15,6 +15,8 @@ class Diversifier(object):
         self.distListToPrevDoc = None
         self.docDistMtrx = None
         self.diverseDocSet = set()
+        self.sumOfCurrToNext = 0
+        self.sumOfPrevToNext = 0
 
 
     def findMostDiverse(self, docCount):
@@ -57,6 +59,12 @@ class Diversifier(object):
             docCounter += 1
             # Update new prev & current docs
             self.prevDoc = self.currentDoc
+            
+            # ---- For Parameter optimization -----
+            self.sumOfCurrToNext += self.distListToCurrentDoc[self.currentDocIndex]
+            if 2 < len(docSetList):
+                self.sumOfPrevToNext += self.distListToPrevDoc[self.currentDocIndex]
+
             self.currentDoc = farthestdoc
             self.distListToPrevDoc = self.distListToCurrentDoc
 
