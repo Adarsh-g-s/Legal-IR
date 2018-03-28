@@ -2,6 +2,10 @@ from SemanticDistCalculator import SemanticDistCalculator
 
 class Diversifier(object):
     """This class is responsible for deversifying the set of documents."""
+
+    # TODO: alpha & beta parameters found using hyper parameter tuning is to be used here.    
+    alpha = 1 # The proportion of distance between current and next dec
+    beta  = 1 # The proportion of distance between previous and next dec
     def __init__(self, originalFileList, originalScoreList):
         self.originalFileList = originalFileList
         self.originalScoreList = originalScoreList
@@ -69,8 +73,7 @@ class Diversifier(object):
             distArray = self.distListToCurrentDoc
         else:
             # Calculate element wise sum of both arrays.
-            # TODO: alpha & beta parameters found using hyper parameter tuning is to be used here.
-            distArray = self.distListToCurrentDoc + self.distListToPrevDoc
+            distArray = (Diversifier.alpha * self.distListToCurrentDoc) + (Diversifier.beta * self.distListToPrevDoc)
         
         highIndex = distArray.argmax()
         if highIndex in self.diverseDocSet:
