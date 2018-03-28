@@ -1,4 +1,3 @@
-import numpy
 from SemanticDistCalculator import SemanticDistCalculator
 
 class Diversifier(object):
@@ -9,7 +8,7 @@ class Diversifier(object):
         self.currentDoc = None
         self.prevDoc = None
         self.distListToCurrentDoc = None
-        self.distListToPrevDoc = numpy.zeros(len(originalScoreList))
+        self.distListToPrevDoc = None
         self.docDistMtrx = None
         self.diverseDocSet = set()
 
