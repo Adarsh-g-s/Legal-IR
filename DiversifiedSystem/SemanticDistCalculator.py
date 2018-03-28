@@ -36,7 +36,7 @@ class SemanticDistCalculator(object):
     def calcDistMatrix(self):
         transformed_matrix = self.vectorizer.transform(self.filePaths)
         self.cosine_dist_array = cosine_distances(transformed_matrix)
-        #print(self.cosine_dist_array[0])
+        return self.cosine_dist_array
         
     def getDistances(self, fileIndex):
         distArray = self.cosine_dist_array[fileIndex]
