@@ -68,7 +68,7 @@ class Diversifier(object):
             self.currentDoc = farthestdoc
             self.distListToPrevDoc = self.distListToCurrentDoc
 
-        return docSetList
+        return docSetList, self.sumOfCurrToNext,self.sumOfPrevToNext
 
 
     def __getFarthestDoc(self):
