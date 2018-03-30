@@ -232,21 +232,35 @@ while (True):
             # Prepare the list of document paths
             docList = []
             scoreList = []
+            resHitList = []
             for hit in immediateResult:
                 docList.append(hit['path'])
                 scoreList.append(hit.score)
+                resHitList.append(hit)
 
             # Pass the document path to the Diversifier
-            diversifier = Diversifier(docList, scoreList)
+            diversifier = Diversifier(docList, resHitList)
             k = 20
-            diverseResult = diversifier.findMostDiverse(k)
+            diverseFileList, diverseDocScoreList = diversifier.findMostDiverse(k)
 
             # Remove the top 'k' from the entire list & add them at the beginning for the final list.
-            for fileName in reversed(diverseResult):
-                if fileName in docList:
-                    docList.remove(fileName)
+            for nDocIdx in range(k-1, 0, -1):
+                if diverseFileList[nDocIdx] in docList:
+                    docList.remove(diverseFileList[nDocIdx])
+                docList.insert(0, diverseFileList[nDocIdx])
+                for whooshHit in resHitList:
+                    if whooshHit.score == diverseDocScoreList[nDocIdx]:
+                        resHitList.remove(whooshHit)
+                        resHitList.insert(0, whooshHit)
+                        break
 
-                docList.insert(0, fileName)
+
+            # Remove the top 'k' from the entire list & add them at the beginning for the final list.
+            # for fileName in reversed(diverseFileList):
+            #    if fileName in docList:
+            #        docList.remove(fileName)
+
+            #    docList.insert(0, fileName)
 
 
             #totalNumberOfPages = int(len(docList)/10)

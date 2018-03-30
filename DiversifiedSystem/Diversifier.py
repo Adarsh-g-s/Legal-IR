@@ -6,9 +6,9 @@ class Diversifier(object):
     # TODO: alpha & beta parameters found using hyper parameter tuning is to be used here.    
     alpha = 1 # The proportion of distance between current and next dec
     beta  = 1 # The proportion of distance between previous and next dec
-    def __init__(self, originalFileList, originalScoreList):
+    def __init__(self, originalFileList, originalHitList):
         self.originalFileList = originalFileList
-        self.originalScoreList = originalScoreList
+        self.originalHitList = originalHitList
         self.currentDoc = None
         self.prevDoc = None
         self.distListToCurrentDoc = None
@@ -33,17 +33,19 @@ class Diversifier(object):
         
         # Multiply the relevance score of the 'potential next' document with its distances from the rest of the documents.
         docIndex = 0
-        for docRelScore in self.originalScoreList:
+        for whooshHit in self.originalHitList:
             # Multiply relevance score to each distance in each column.
-            self.docDistMtrx[:,docIndex] *= docRelScore
+            self.docDistMtrx[:,docIndex] *= whooshHit.score
             docIndex = docIndex + 1
 
         # At this point, the distance matrix is ready and we iteratively find 
         # the most diverse doc starting from the most relevant doc.
         docSetList = []
+        diverseDocScoreList = []
         self.currentDoc = self.originalFileList[0]
         self.currentDocIndex = 0 # Starts with the most relevant doc
         self.diverseDocSet.add(self.currentDocIndex)
+        diverseDocScoreList.append(self.originalHitList[self.currentDocIndex].score)
         docSetList.append(self.currentDoc) # Add the most relevant doc at first
 
         print( docCount, "Most diverse results:\n")
@@ -56,6 +58,7 @@ class Diversifier(object):
                 break
             print(farthestdoc,"\n")
             docSetList.append(farthestdoc)
+            diverseDocScoreList.append(self.originalHitList[self.currentDocIndex].score)
             docCounter += 1
             # Update new prev & current docs
             self.prevDoc = self.currentDoc
@@ -68,7 +71,7 @@ class Diversifier(object):
             self.currentDoc = farthestdoc
             self.distListToPrevDoc = self.distListToCurrentDoc
 
-        return docSetList
+        return docSetList, diverseDocScoreList
 
 
     def __getFarthestDoc(self):
