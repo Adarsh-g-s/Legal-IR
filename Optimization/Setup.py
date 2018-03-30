@@ -23,7 +23,7 @@ from whoosh.scoring import Weighting
 from whoosh.highlight import highlight, WholeFragmenter
 from Diversifier import Diversifier
 from hyperopt import hp
-from hyperopt import fmin, Trials
+from hyperopt import fmin, Trials, tpe
 import numpy
 import hyperopt
 from random import seed
@@ -194,9 +194,9 @@ class Setup:
         a = space['a']
         b = space['b']
         diversifier = Diversifier(setup.docList, setup.scoreList)
-        k = 10
-        Diversifier.alpha = a
-        Diversifier.beta = b
+        k = 30
+        diversifier.alpha = a
+        diversifier.beta = b
         diverseResult,setup.sumOfCurrToNext,setup.sumOfPrevToNext = diversifier.findMostDiverse(k)
         return -(a * setup.sumOfCurrToNext + b * setup.sumOfPrevToNext)
                     
@@ -293,11 +293,11 @@ while (True):
  
             '''
             Use random integer distribution for finding alpha(a) and beta(b)
-            a >> b and a+b nearly equal to 1
+            
             '''
             setup.space={
-                'a': hp.uniform ('a',0.5,0.9),
-                'b': hp.uniform ('b',0,0.1)
+                'a': hp.uniform ('a',0,1),
+                'b': hp.uniform ('b',0,1)
                 }
      
             '''
@@ -305,16 +305,16 @@ while (True):
             '''
  
             # The Trials object will store details of each iteration
-            seed = 10
+            seed = 1000
             trials = Trials()
- 
+            
             best = fmin(fn=setup.objective,
                         space=setup.space,
                         algo=hyperopt.rand.suggest,
-                        max_evals=10,trials=trials,rstate= numpy.random.RandomState(seed))
+                        max_evals=100,trials=trials,rstate= numpy.random.RandomState(seed))
+            
  
             print("Maximum: ", best)
- 
 #             print('trials:')
 #             for trial in trials.trials[:2]:
 #                 print(trial)

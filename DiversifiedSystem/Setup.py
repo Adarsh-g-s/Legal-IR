@@ -194,7 +194,7 @@ while (True):
        
         #Check if an index folder exists, if it does not then create else use existing one.
         setup.indexName = glob(indexDirectory+"/"+'**')
-        if not os.path.exists(indexDirectory):
+        if not (os.path.exists(indexDirectory) and setup.indexName):
             indexFolder = index.create_in(indexDirectory, schema)
         else:
             indexFolder = index.open_dir(indexDirectory)
