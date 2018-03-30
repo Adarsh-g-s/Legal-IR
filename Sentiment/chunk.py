@@ -1,6 +1,6 @@
 #code to split into chunks
 from bs4 import BeautifulSoup
-url = open('E:\\Masters\\3rd semester\\DKE project\\document new\\Religion\\106281.json.html', 'r')#file name
+url = open('D:\Projects\Legal_IR\Doc_Dump\Temp\\12.html', 'r')#file name
 soup=BeautifulSoup(url,"lxml")
 data=soup.get_text().replace('\n','\n\n')
 paragraphs = data.split("\n\n")
@@ -40,6 +40,6 @@ for value in paragraphs:
 
 print(chunk1)
 
-print(chunk2)
+#print(chunk2)
 
-print(chunk3)
+#print(chunk3)
