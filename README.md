@@ -17,7 +17,7 @@ PyDev: Folder structure of the project
  
 IRSystem        \n             
 DiversifiedSystem            \n                               
-    * Diversifier.py
+    * Diversifier.py         
     * Setup.py
 
 
