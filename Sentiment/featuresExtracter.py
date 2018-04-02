@@ -75,12 +75,24 @@ class feat_analyser:
         data_review_word_count = data_review_tokens.__len__()
         #print(data_review_word_count)
 
-        # positive words
+
         feat_list = []
-        feat_list.append(positive_words.intersection(data_review_tokens).__len__())
+        pos_word_count = positive_words.intersection(data_review_tokens).__len__()
+        neg_word_count = negative_words.intersection(data_review_tokens).__len__()
+        total_count = pos_word_count+neg_word_count
+
+        if total_count!=0:
+            pos_word_count_norm = pos_word_count/(total_count)
+            neg_word_count_norm = neg_word_count/(total_count)
+        else:
+            pos_word_count_norm = neg_word_count_norm = 0
+
+
+        # positive words
+        feat_list.append(pos_word_count_norm)
 
         # negative words
-        feat_list.append(negative_words.intersection(data_review_tokens).__len__())
+        feat_list.append(neg_word_count_norm)
 
         #Vander score
         vander_sent = sid.polarity_scores(data_review)

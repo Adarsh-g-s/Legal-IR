@@ -29,7 +29,7 @@ class sentiment_method1:
         #load classifier
         clf = joblib.load('svmClasifier.pkl')
 
-        feature_cols_train = ['negative_word_count', 'positive_word_count', 'vander_score', 'happ_score']
+        feature_cols_train = ['negative_word_count', 'positive_word_count', 'vander_score']#, 'happ_score'  excluded
 
         df_s =pd.DataFrame(columns=['Sentiment'])
 
@@ -88,37 +88,46 @@ class sentiment_method1:
 
                 pred1 = clf.predict(df[feature_cols_train])
                 #print(pred1)
+                pred_list.append(pred1[0])
+
                 # print(chunk2)
                 sent_feat2 = fa.defsentfeatextractor(chunk2)
                 df.loc[name] = sent_feat2
 
                 pred2 = clf.predict(df[feature_cols_train])
                 #print(pred2)
+                pred_list.append(pred2[0])
                 # print(chunk3)
                 sent_feat3 = fa.defsentfeatextractor(chunk3)
                 df.loc[name] = sent_feat3
 
                 pred3 = clf.predict(df[feature_cols_train])
                 #print(pred3)
+                pred_list.append(pred3[0])
 
+                print("pred_list:")
+                print(pred_list)
 
-                if pred_list.count('0')==2:
+                #print("count of 0:")
+                #print(pred_list.count(0))
+
+                if pred_list.count(0)>=2:
                     pred = 0
-                elif pred_list.count('1')==2:
+                elif pred_list.count(1)>=2:
                     pred = 1
-                elif pred_list.count('2')==2:
+                elif pred_list.count(2)>=2:
                     pred =2
                 else:
                     pred = 0
                 df= None
                 df_s.loc[name] = pred
-                print(pred)
+                print(name.__str__()+" : "+pred.__str__())
         #we get the docs with all sentiments
         #now lets calculate distance
         #print(df_s)
         df2 = pd.DataFrame(distance_matrix(df_s.values, df_s.values), index=df_s.index, columns=df_s.index)
         df2=df2.applymap(sentiment_method1.zeroOrOne)
-        print(df2)
+        #print(df2)
         return df2
 
 
