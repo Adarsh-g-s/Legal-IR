@@ -21,7 +21,7 @@ from whoosh import qparser
 from whoosh import scoring
 from whoosh.scoring import Weighting
 from whoosh.highlight import highlight, WholeFragmenter
-from Diversifier import Diversifier
+from DiversifiedSystem.Diversifier import Diversifier
 
 class Indexer:
     '''
@@ -233,10 +233,14 @@ while (True):
             docList = []
             scoreList = []
             resHitList = []
+            #counter = 0
             for hit in immediateResult:
+                #counter = counter+1
                 docList.append(hit['path'])
                 scoreList.append(hit.score)
                 resHitList.append(hit)
+                #if counter==10:
+                     #break
 
             # Pass the document path to the Diversifier
             diversifier = Diversifier(docList, resHitList)

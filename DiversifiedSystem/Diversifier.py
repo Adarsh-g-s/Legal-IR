@@ -1,4 +1,7 @@
-from SemanticDistCalculator import SemanticDistCalculator
+from DiversifiedSystem.SemanticDistCalculator import SemanticDistCalculator
+from Sentiment.SentimentMethod1 import sentiment_method1 as sm1
+from Sentiment.SentimentMethod2 import sentiment_method2 as sm2
+
 
 class Diversifier(object):
     """This class is responsible for deversifying the set of documents."""
@@ -29,8 +32,14 @@ class Diversifier(object):
         semDistCalc = SemanticDistCalculator()
         semDistCalc.learnVocabulary(self.originalFileList)
         self.docDistMtrx = semDistCalc.calcDistMatrix()
+
         #TODO: Address the sentiment component too for the distance matrix
-        
+        #Sentiment Method 1
+        self.sentDistMatrix = sm1.sent_dist_matrix_calc(self.originalFileList)
+        # Sentiment Method 2
+        self.sentDistMatrix = sm2.sent_dist_matrix_calc(self.originalFileList)
+        # to-do
+
         # Multiply the relevance score of the 'potential next' document with its distances from the rest of the documents.
         docIndex = 0
         for whooshHit in self.originalHitList:

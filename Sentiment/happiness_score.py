@@ -8,7 +8,7 @@ class happiness_score:
         total_happiness_score=0.0
         #code to get list of word and its happiness score from document
         d = {}
-        with open("data1.txt") as i:
+        with open("../Sentiment/data1.txt") as i:
             for line in i:
                (key, val) = line.split()
                d[key] = val

@@ -27,25 +27,32 @@ class sentiment_method1:
 
     def sent_dist_matrix_calc(data_dir):
         #load classifier
-        clf = joblib.load('svmClasifier.pkl')
+        clf = joblib.load('../Sentiment/svmClasifier.pkl')
 
         feature_cols_train = ['negative_word_count', 'positive_word_count', 'vander_score']#, 'happ_score'  excluded
 
         df_s =pd.DataFrame(columns=['Sentiment'])
 
         # traverse through the data object
-        for path, subdirs, files in os.walk(data_dir):
-            for name in files:
+
+        #code for reading from file commented
+        # for path, subdirs, files in os.walk(data_dir):
+        #     for name in files:
+        # code for reading from file commented
+
+        for abs_path in data_dir:
                 df = pd.DataFrame(columns=['negative_word_count', 'positive_word_count', 'vander_score', 'happ_score'])
 
 
                 # print( os.path.join(path, name))
                 # if row.Filename==name:
-                absolutePathToFile = pathlib.PurePath(path, name)
+                #absolutePathToFile = pathlib.PurePath(path, name)
                 #print(absolutePathToFile)
+                #url = open(absolutePathToFile, encoding="utf8")
+                absolutePathToFile = pathlib.PurePath(abs_path)
                 url = open(absolutePathToFile, encoding="utf8")
+                name = os.path.basename(abs_path)
                 soup = BeautifulSoup(url, "lxml")
-                entire_text = soup.get_text()
                 data_for_chunk = soup.get_text().replace('\n', '\n\n')
                 paragraphs = data_for_chunk.split("\n\n")
                 count = 0
@@ -105,8 +112,8 @@ class sentiment_method1:
                 #print(pred3)
                 pred_list.append(pred3[0])
 
-                print("pred_list:")
-                print(pred_list)
+                # print("pred_list:")
+                # print(pred_list)
 
                 #print("count of 0:")
                 #print(pred_list.count(0))
@@ -121,13 +128,14 @@ class sentiment_method1:
                     pred = 0
                 df= None
                 df_s.loc[name] = pred
-                print(name.__str__()+" : "+pred.__str__())
+                #print(name.__str__()+" : "+pred.__str__())
         #we get the docs with all sentiments
         #now lets calculate distance
         #print(df_s)
         df2 = pd.DataFrame(distance_matrix(df_s.values, df_s.values), index=df_s.index, columns=df_s.index)
         df2=df2.applymap(sentiment_method1.zeroOrOne)
-        #print(df2)
+        print(df2)
+        print(df2.as_matrix())
         return df2
 
 
