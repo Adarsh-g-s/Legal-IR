@@ -14,10 +14,11 @@ Note: 1. Please install dependencies(vader,numpy,nltk etc) for your IDE.
       2. Sort your import dependencies as per your respective IDE. e.x. below
 
 PyDev: Folder structure of the project
--> IRSystem
--> DiversifiedSystem
-    Diversifier.py
-    Setup.py
+ 
+IRSystem
+DiversifiedSystem
+    * Diversifier.py
+    * Setup.py
 
 
 If one is importing the Diversifier.py in PyDev then 
