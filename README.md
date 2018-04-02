@@ -15,8 +15,8 @@ Note: 1. Please install dependencies(vader,numpy,nltk etc) for your IDE.
 
 PyDev: Folder structure of the project
  
-IRSystem
-DiversifiedSystem
+IRSystem        \n             
+DiversifiedSystem            \n                               
     * Diversifier.py
     * Setup.py
 
