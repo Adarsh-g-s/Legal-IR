@@ -1,4 +1,4 @@
-from Sentiment.SentimentMethod1 import sentiment_method1 as sm1
+from SentimentMethod1 import sentiment_method1 as sm1
 
 
 

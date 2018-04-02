@@ -21,7 +21,7 @@ from whoosh import qparser
 from whoosh import scoring
 from whoosh.scoring import Weighting
 from whoosh.highlight import highlight, WholeFragmenter
-from DiversifiedSystem.Diversifier import Diversifier
+from Diversifier import Diversifier
 
 class Indexer:
     '''

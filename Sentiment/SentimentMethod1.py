@@ -9,8 +9,7 @@ from bs4 import BeautifulSoup
 import os
 import pathlib
 from sklearn import svm
-from Sentiment.happiness_score import happiness_score as hs
-from Sentiment.featuresExtracter import feat_analyser as fa
+from featuresExtracter import feat_analyser as fa
 from sklearn.externals import joblib
 from scipy.spatial import distance_matrix
 
@@ -39,8 +38,11 @@ class sentiment_method1:
         # for path, subdirs, files in os.walk(data_dir):
         #     for name in files:
         # code for reading from file commented
-
+        #counter =0
+        #print("data_dir")
+        #print(data_dir)
         for abs_path in data_dir:
+                #counter +=1
                 df = pd.DataFrame(columns=['negative_word_count', 'positive_word_count', 'vander_score', 'happ_score'])
 
 
@@ -52,6 +54,7 @@ class sentiment_method1:
                 absolutePathToFile = pathlib.PurePath(abs_path)
                 url = open(absolutePathToFile, encoding="utf8")
                 name = os.path.basename(abs_path)
+                #print(name)
                 soup = BeautifulSoup(url, "lxml")
                 data_for_chunk = soup.get_text().replace('\n', '\n\n')
                 paragraphs = data_for_chunk.split("\n\n")
@@ -89,24 +92,28 @@ class sentiment_method1:
                     countcumulative = countcumulative + 1
 
                 pred_list = []
-                #print(chunk1)
+                #print("chunk1")
                 sent_feat1 = fa.defsentfeatextractor(chunk1)
                 df.loc[name] = sent_feat1
+
 
                 pred1 = clf.predict(df[feature_cols_train])
                 #print(pred1)
                 pred_list.append(pred1[0])
 
-                # print(chunk2)
+                #print("chunk2")
                 sent_feat2 = fa.defsentfeatextractor(chunk2)
                 df.loc[name] = sent_feat2
+
 
                 pred2 = clf.predict(df[feature_cols_train])
                 #print(pred2)
                 pred_list.append(pred2[0])
-                # print(chunk3)
+
+                #print("chunk3")
                 sent_feat3 = fa.defsentfeatextractor(chunk3)
                 df.loc[name] = sent_feat3
+
 
                 pred3 = clf.predict(df[feature_cols_train])
                 #print(pred3)
@@ -127,16 +134,23 @@ class sentiment_method1:
                 else:
                     pred = 0
                 df= None
+
+                #print("pred:")
+                #print(pred)
+
                 df_s.loc[name] = pred
+                #print(df_s)
                 #print(name.__str__()+" : "+pred.__str__())
         #we get the docs with all sentiments
         #now lets calculate distance
-        #print(df_s)
+
         df2 = pd.DataFrame(distance_matrix(df_s.values, df_s.values), index=df_s.index, columns=df_s.index)
+
         df2=df2.applymap(sentiment_method1.zeroOrOne)
-        print(df2)
-        print(df2.as_matrix())
-        return df2
+        #print(df2)
+        #print(df2.as_matrix())
+        sentDistMatrx = df2.as_matrix()
+        return sentDistMatrx
 
 
     def zeroOrOne(x):

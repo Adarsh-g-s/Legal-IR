@@ -5,7 +5,7 @@ import string
 from collections import Counter
 import re
 from textblob import TextBlob
-from Sentiment.happiness_score import happiness_score as hs
+from happiness_score import happiness_score as hs
 
 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer

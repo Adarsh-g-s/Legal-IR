@@ -32,7 +32,8 @@ class sentiment_method2:
         #now lets calculate distance
         #print(df_s)
         df2 = pd.DataFrame(distance_matrix(df_s.values, df_s.values), index=df_s.index, columns=df_s.index)
-        print(df2.as_matrix())
-        return df2
+        #print(df2.as_matrix())
+        sentDistMatrx = df2.as_matrix()
+        return sentDistMatrx
 
 

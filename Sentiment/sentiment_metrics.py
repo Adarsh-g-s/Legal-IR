@@ -3,8 +3,8 @@ from bs4 import BeautifulSoup
 import os
 import pathlib
 import pandas as pd
-from Sentiment.featuresExtracter import feat_analyser as fa
-from Sentiment.happiness_score import happiness_score as hs
+from featuresExtracter import feat_analyser as fa
+from happiness_score import happiness_score as hs
 
 global lexicon_directory
 lexicon_directory = '../data/opinion-lexicon-English'
