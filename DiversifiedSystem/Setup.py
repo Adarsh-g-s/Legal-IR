@@ -245,6 +245,8 @@ while (True):
             # Pass the document path to the Diversifier
             diversifier = Diversifier(docList, resHitList)
             k = 20
+            resultSize = len(docList)
+            if( k > resultSize ): k = resultSize
             diverseFileList, diverseDocScoreList = diversifier.findMostDiverse(k)
 
             # Remove the top 'k' from the entire list & add them at the beginning for the final list.
