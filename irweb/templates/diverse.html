@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IR Project</title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+    <!-- Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/animate.css') }}" type="text/css">
+    <link href="{{ url_for('static',filename='css/hover-min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/jquery.bxslider.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main-styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/loader.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/general.css') }}">
+
+
+    <!-- Google Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+
+    <style type="text/css">
+        {#.dataTables_filter,.dataTables_info,.dataTables_length { display: none; }#}
+        .dataTables_filter, .dataTables_length, .dataTables_wrapper thead {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<!-- end header-->
+<!-- start logo section-->
+<div id="logo-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 text-right">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end logo section-->
+
+<!-- start search section-->
+<div id="search-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+
+                {#                <form class="review-form" method="post" action="">#}
+
+                <div class="col-sm-9 col-md-10 nopadding">
+                    <div id="search-input">
+
+                        <div class="col-sm-12 nopadding">
+                            <input type="text" name="query" id="query" class="form-control" placeholder="Search Query">
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-2 text-right nopadding-right">
+                    <div id="search-button">
+                        <button type="submit" id="search"><i class="fa fa-search"></i>Search</button>
+                    </div>
+                </div>
+                {#                </form>#}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search section-->
+
+<!-- end main banner-->
+<!-- start search categories-->
+<div id="search-categories">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div id="categories-heading">
+                    <h1><span>search Results</span></h1>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search categories-->
+
+<!-- start feature listings-->
+<div id="feature-listings">
+    <div class="container">
+        <table id="dataTableId" cellspacing="0" width="100%" class="display">
+            <thead>
+            <tr>
+                <th></th>
+            </tr>
+            </thead>
+
+
+            <div class="row">
+                <div class="col-sm-12 text-center">
+
+                    <div id="feature-box">
+                        <tbody>
+
+                        </tbody>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+
+                </div>
+            </div>
+        </table>
+    </div>
+</div>
+<!-- end feature listings-->
+
+<div class="clearfix"></div>
+
+<!-- Scripts -->
+
+<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-1.11.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/table/jquery.dataTables.min.js') }}"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#search').click(function () {
+            oTable = $('#dataTableId').dataTable({
+                serverSide: true,
+                destroy: true,
+                filter: true,
+                paginate: true,
+                processing: true,
+                ajax: {
+                    url: "/ir/systemtwo/query",
+                    type: 'GET',
+                    data: function (d) {
+                        d.filter = "yes",
+                            d.query = $("#query").val()
+                    }
+                },
+                columns: [
+                    {
+                        data: null,
+                        render: function (data, type, row, meta) {
+                            {#console.log(row["relevantScore"])#}
+                            return '<div class="col-sm-12 col-md-12"><div class="feature-boxes-container"><div class="feature-box-text"><h2><span><i class="fa fa-star"></i>' + row["relevantScore"].toFixed(2) + '</span></h2><a href="http://127.0.0.1:8887' + row["path"] + '" target="_blank"><h3>' + row["title"] + '</h3></a><p>' + row["summary"] + '</p></div></div></div><div class="clearfix"></div>'
+
+
+                        }
+
+                    }
+                ]
+
+            });
+
+        });
+
+
+    });
+</script>
+
+</body>
+</html>

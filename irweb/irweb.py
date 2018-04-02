@@ -4,6 +4,7 @@ import string
 from random import *
 
 from systemone import *
+from systemtwo import *
 
 app = Flask(__name__)
 app.secret_key = 'dslfdsls3993jdshfsd'
@@ -64,7 +65,37 @@ def systemhome():
 
 @app.route('/ir/systemtwo/home')
 def showsystemtwohome():
-    return render_template('index.html')
+    return render_template('diverse.html')
+
+@app.route('/ir/systemtwo/query', methods=['GET'])
+def systemtwohome():
+    start = request.args.get('start', default=1, type=int)
+    length = request.args.get('length', default=10, type=int)
+    filter = request.args.get('filter', default="no", type=str)
+    draw = request.args.get('draw', default=1, type=int)
+    query = request.args.get('query', type=str)
+    # start = 1
+    # length = 10
+
+
+    if start == 10:
+        start = 1;
+
+    if start > 10:
+        start = start // length
+
+    start = start + 1;
+    search = SearchTwo()
+    response = search.passingQuery(query, start, length)
+
+    finalout = {
+        'data': response,
+        'draw': draw,
+        'recordsTotal': len(response),
+        'recordsFiltered': len(response)
+    }
+
+    return jsonify(finalout)
 
 @app.route('/ir/userstudy', methods=['POST', 'GET'])
 def showuserstudy():
