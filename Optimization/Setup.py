@@ -192,7 +192,7 @@ class Setup:
     
     def objective(self,space):
         a = space['a']
-        b = space['b']
+        b = 2-a # space['b']
         diversifier = Diversifier(setup.docList, setup.scoreList)
         k = 30
         diversifier.alpha = a
@@ -296,8 +296,8 @@ while (True):
             
             '''
             setup.space={
-                'a': hp.uniform ('a',0,1),
-                'b': hp.uniform ('b',0,1)
+                'a': hp.uniform ('a',0,2)#,
+                #'b': hp.uniform ('b',0,1)
                 }
      
             '''
@@ -311,7 +311,7 @@ while (True):
             best = fmin(fn=setup.objective,
                         space=setup.space,
                         algo=hyperopt.rand.suggest,
-                        max_evals=100,trials=trials,rstate= numpy.random.RandomState(seed))
+                        max_evals=150,trials=trials,rstate= numpy.random.RandomState(seed))
             
  
             print("Maximum: ", best)
