@@ -25,3 +25,6 @@ If one is importing the Diversifier.py in PyDev then
 1. In Properties set the "SourceFolder" as the project directory(IRSystem).
 2. Use the import statement as from DiversifiedSystem.Diversifier import Diversifier in the setup.py file.
 
+Using Visual Studio:
+--------------------
+While using visual studio to create the prjects from the existing code, .pyproj files will be created for each. Be sure to add Sentiment project as a reference to the created project.
