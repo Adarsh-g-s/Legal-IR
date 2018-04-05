@@ -1,6 +1,6 @@
 from SemanticDistCalculator import SemanticDistCalculator
-#from SentimentMethod1 import sentiment_method1 as sm1
-#from SentimentMethod2 import sentiment_method2 as sm2
+from SentimentMethod1 import sentiment_method1 as sm1
+from SentimentMethod2 import sentiment_method2 as sm2
 
 class Diversifier(object):
     """This class is responsible for deversifying the set of documents."""
@@ -34,7 +34,7 @@ class Diversifier(object):
 
         #TODO: Address the sentiment component too for the distance matrix
         #Sentiment Method 1
-        #self.sentDistMatrix = sm1.sent_dist_matrix_calc(self.originalFileList)
+        self.sentDistMatrix = sm1.sent_dist_matrix_calc(self.originalFileList)
         # Sentiment Method 2
         #self.sentDistMatrix = sm2.sent_dist_matrix_calc(self.originalFileList)
         # to-do
@@ -46,7 +46,7 @@ class Diversifier(object):
         #
         # print("Sentiment matrix:")
         # print(self.sentDistMatrix)
-        #self.docDistMtrx += self.sentDistMatrix
+        self.docDistMtrx += self.sentDistMatrix
 
         # Multiply the relevance score of the 'potential next' document with its distances from the rest of the documents.
         for docIndex in range(0, len(self.originalFileList)):
