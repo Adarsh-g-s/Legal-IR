@@ -249,7 +249,7 @@ while (True):
             diverseFileList, diverseDocScoreList = diversifier.findMostDiverse(k)
 
             # Remove the top 'k' from the entire list & add them at the beginning for the final list.
-            for nDocIdx in range(k-1, 0, -1):
+            for nDocIdx in range(k-1, -1, -1):
                 for whooshHit in resHitList:
                     if whooshHit.score == diverseDocScoreList[nDocIdx]:
                         resHitList.remove(whooshHit)
