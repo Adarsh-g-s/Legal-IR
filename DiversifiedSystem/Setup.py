@@ -231,16 +231,15 @@ while (True):
 
             # Prepare the list of document paths
             docList = []
-            scoreList = []
             resHitList = []
-            #counter = 0
+            counter = 0
             for hit in immediateResult:
-                #counter = counter+1
-                docList.append(hit['path'])
-                scoreList.append(hit.score)
+                # The 'k' most diverse docs shall be searched in the 100 most relevant docs.
+                # TODO: Find better cut off.
+                if counter < 100:
+                    docList.append(hit['path'])
+                    counter = counter + 1
                 resHitList.append(hit)
-                #if counter==10:
-                     #break
 
             # Pass the document path to the Diversifier
             diversifier = Diversifier(docList, resHitList)
@@ -251,9 +250,6 @@ while (True):
 
             # Remove the top 'k' from the entire list & add them at the beginning for the final list.
             for nDocIdx in range(k-1, 0, -1):
-                if diverseFileList[nDocIdx] in docList:
-                    docList.remove(diverseFileList[nDocIdx])
-                docList.insert(0, diverseFileList[nDocIdx])
                 for whooshHit in resHitList:
                     if whooshHit.score == diverseDocScoreList[nDocIdx]:
                         resHitList.remove(whooshHit)
@@ -272,9 +268,9 @@ while (True):
             #totalNumberOfPages = int(len(docList)/10)
             #pageNumber, rank, highestScore = search.showResults(query,pageNumber,rank,highestScore)
             print("\nFinal Result:")
-            for fileName in docList:
+            for whooshHit in resHitList:
                 rank = rank + 1
-                print("\nRank#", rank, ": ", fileName)
+                print("\nRank#", rank, ": ", whooshHit['path'])
                 if 0 == rank % 10:
                     setup.choice = search.wantNextPageResults()
                     if setup.choice == 'Y' or setup.choice == 'y':

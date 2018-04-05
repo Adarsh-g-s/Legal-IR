@@ -49,11 +49,9 @@ class Diversifier(object):
         self.docDistMtrx += self.sentDistMatrix
 
         # Multiply the relevance score of the 'potential next' document with its distances from the rest of the documents.
-        docIndex = 0
-        for whooshHit in self.originalHitList:
+        for docIndex in range(0, len(self.originalFileList)):
             # Multiply relevance score to each distance in each column.
-            self.docDistMtrx[:,docIndex] *= whooshHit.score
-            docIndex = docIndex + 1
+            self.docDistMtrx[:,docIndex] *= self.originalHitList[docIndex].score
 
         # At this point, the distance matrix is ready and we iteratively find 
         # the most diverse doc starting from the most relevant doc.
