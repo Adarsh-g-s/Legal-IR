@@ -194,7 +194,8 @@ class Setup:
         a = space['a']
         b = 2-a # space['b']
         diversifier = Diversifier(setup.docList, setup.scoreList)
-        k = 30
+        k = 20
+        if( k > len(setup.docList) ): k = len(setup.docList)
         diversifier.alpha = a
         diversifier.beta = b
         diverseResult,setup.sumOfCurrToNext,setup.sumOfPrevToNext = diversifier.findMostDiverse(k)
@@ -256,9 +257,14 @@ while (True):
             # Prepare the list of document paths
             setup.docList = []
             setup.scoreList = []
+            counter = 0
             for hit in immediateResult:
-                setup.docList.append(hit['path'])
-                setup.scoreList.append(hit.score)
+                # The 'k' most diverse docs shall be searched in the 100 most relevant docs.
+                # TODO: Find better cut off.
+                if counter < 100:
+                    setup.docList.append(hit['path'])
+                    setup.scoreList.append(hit.score)
+                    counter = counter + 1
 
             # Pass the document path to the Diversifier
 #             diversifier = Diversifier(docList, scoreList)
