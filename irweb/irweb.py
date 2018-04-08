@@ -9,7 +9,7 @@ from systemtwo import *
 app = Flask(__name__)
 app.secret_key = 'dslfdsls3993jdshfsd'
 # conn = sqlite3.connect("C:\Users\Oyewale\Desktop\IR Project\Legal-IR\irweb\data\mydatabase.db")
-conn = sqlite3.connect("C:\\Users\\Oyewale\\Desktop\\mydatabase.db")
+conn = sqlite3.connect(".\mydatabase.db")
 # conn = sqlite3.connect("mydatabase.db")
 cursor = conn.cursor()
 
