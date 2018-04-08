@@ -8,7 +8,9 @@ from systemtwo import *
 
 app = Flask(__name__)
 app.secret_key = 'dslfdsls3993jdshfsd'
-conn = sqlite3.connect("C:\\Users\\Oyewale\\Desktop\\mydatabase.db")  # or use :memory: to put it in RAM
+# conn = sqlite3.connect("C:\Users\Oyewale\Desktop\IR Project\Legal-IR\irweb\data\mydatabase.db")
+conn = sqlite3.connect("C:\\Users\\Oyewale\\Desktop\\mydatabase.db")
+# conn = sqlite3.connect("mydatabase.db")
 cursor = conn.cursor()
 
 
@@ -106,6 +108,21 @@ def showuserstudy():
         sex = request.form.get('sex')
         course = request.form.get('course')
         semester = request.form.get('semester')
+        firstSystemUsed = ''
+        secondSystemUsed = ''
+        # generate the order of the first two system using random number;
+        system = randint(1,10)
+
+        if system % 2 == 0:
+            firstSystemUsed = 'systemOne'
+            secondSystemUsed = 'systemTwo'
+        else:
+            firstSystemUsed = 'systemTwo'
+            secondSystemUsed = 'systemOne'
+
+        session['firstSystemUsed'] = firstSystemUsed
+        session['secondSystemUsed'] = secondSystemUsed
+
 
         allchar = string.ascii_lowercase + string.digits
         user_id = "".join(choice(allchar) for x in range(randint(5, 8)))
