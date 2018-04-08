@@ -61,8 +61,7 @@ class Search:
     def showResults(self, query, pageNumber,pageLength):
         # pageNumber += 1
         search = Search()
-        root_path = os.path.abspath(os.path.dirname(__file__))
-        indexDirectory = os.path.join(root_path, "index")
+        indexDirectory = search.getIndexDirectory()
         indexReader = open_dir(indexDirectory)
         searcher = indexReader.searcher(weighting=scoring.BM25F(B=0.75, K1=1.5))
         results = searcher.search_page(query,pageNumber,pagelen=pageLength)
@@ -72,11 +71,9 @@ class Search:
         return results
 
     def getIndexDirectory(self):
-
-       root_path = os.path.abspath(os.path.dirname(__file__))
-       indexDirectory = os.path.join(root_path, "index")
+       indexDirectory = os.getcwd() + '\..\index'
        if not os.path.exists(indexDirectory):
-        os.makedirs(indexDirectory)
+            os.makedirs(indexDirectory)
 
        return indexDirectory
 
@@ -84,8 +81,7 @@ class Search:
     def passingQuery(queryInput,pageNumber,pageLength):
 
         search = Search()
-        root_path = os.path.abspath(os.path.dirname(__file__))
-        indexDirectory = os.path.join(root_path, "index")
+        indexDirectory = search.getIndexDirectory()
         indexReader = open_dir(indexDirectory)
         indexer = Indexer()
         queryParser = search.getTheQueryParser(indexer)
