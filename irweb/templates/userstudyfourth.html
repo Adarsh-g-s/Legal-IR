@@ -70,11 +70,11 @@
                     <b>Using system two, search for any <b>Rape</b> related query  </b>
                     <form id="title-form" role="form" method="POST" action="/ir/userstudy/4">
                       <input type="hidden" name="system_used" value="{{ session['secondSystemUsed'] }}">
-                          {% if session['secondSystemUsed'] == 'systemOne' %}
-                       <a href="/ir/systemone/home" target="_blank">click here to open the search tool</a>
-                            {%  else  %}
-                              <a href="/ir/systemtwo/home" target="_blank">click here to open the search tool</a>
-                     {% endif %}
+                    {#                        {% if session['firstSystemUsed'] == 'systemOne' %}#}
+                       <a href="/ir/{{ session['secondSystemUsed'] }}/home" target="_blank">click here to open the search tool</a>
+{#                            {%  else  %}#}
+{#                              <a href="/ir/systemtwo/home" target="_blank">click here to open the search tool</a>#}
+{#                     {% endif %}#}
 
  <div id="title">
                         <b> Before Searching: </b>

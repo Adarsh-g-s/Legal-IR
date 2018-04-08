@@ -13,41 +13,50 @@
     <SUITE FILE_PATH="coverage/irweb$systemone.coverage" NAME="systemone Coverage Results" MODIFIED="1514039221089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/irweb$Setup.coverage" NAME="Setup Coverage Results" MODIFIED="1517222260035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/irweb$trial.coverage" NAME="trial Coverage Results" MODIFIED="1514040456533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/irweb$irweb.coverage" NAME="irweb Coverage Results" MODIFIED="1522995692724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/irweb$irweb.coverage" NAME="irweb Coverage Results" MODIFIED="1523186480528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="irweb.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="irweb.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/irweb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1819">
-              <caret line="113" column="30" lean-forward="true" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="30" />
+            <state relative-caret-position="493">
+              <caret line="147" column="47" lean-forward="true" selection-start-line="147" selection-start-column="47" selection-end-line="147" selection-end-column="47" />
               <folding>
                 <element signature="e#0#93#0" expanded="true" />
-                <marker date="1522995443593" expanded="true" signature="3934:3974" ph="INSERT INTO biodata... " />
-                <marker date="1522995443593" expanded="true" signature="4647:4686" ph="INSERT INTO skills... " />
-                <marker date="1522995443593" expanded="true" signature="5865:5917" ph="INSERT INTO taskone... " />
-                <marker date="1522995443593" expanded="true" signature="7058:7112" ph="INSERT INTO tasktwo... " />
-                <marker date="1522995443593" expanded="true" signature="8319:8377" ph="INSERT INTO taskthree... " />
+                <marker date="1523186253826" expanded="true" signature="4681:4721" ph="INSERT INTO biodata... " />
+                <marker date="1523186253826" expanded="true" signature="5394:5433" ph="INSERT INTO skills... " />
+                <marker date="1523186253826" expanded="true" signature="6612:6664" ph="INSERT INTO taskone... " />
+                <marker date="1523186253826" expanded="true" signature="7805:7859" ph="INSERT INTO tasktwo... " />
+                <marker date="1523186253826" expanded="true" signature="9066:9124" ph="INSERT INTO taskthree... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userstudythird.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/userstudythird.html">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+            <state relative-caret-position="311">
+              <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userstudyfourth.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/userstudyfourth.html">
+      <file leaf-file-name="diverse.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/diverse.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="75" column="27" lean-forward="true" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="113" />
+            <state relative-caret-position="225">
+              <caret line="156" column="147" selection-start-line="156" selection-start-column="147" selection-end-line="156" selection-end-column="147" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="userstudythird.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/userstudythird.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="167">
+              <caret line="72" selection-start-line="72" selection-end-line="77" />
             </state>
           </provider>
         </entry>
@@ -55,8 +64,26 @@
       <file leaf-file-name="userstudybio.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/userstudybio.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="66" column="13" lean-forward="true" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
+            <state relative-caret-position="-255">
+              <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="userstudyfourth.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/userstudyfourth.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="71" column="16" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="104" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="userstudyfirst.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/userstudyfirst.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="128" column="115" selection-start-line="128" selection-start-column="115" selection-end-line="128" selection-end-column="115" />
             </state>
           </provider>
         </entry>
@@ -64,8 +91,17 @@
       <file leaf-file-name="userstudyfifth.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/userstudyfifth.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="72" column="110" selection-start-line="72" selection-start-column="110" selection-end-line="72" selection-end-column="110" />
+            <state relative-caret-position="177">
+              <caret line="71" column="97" selection-start-line="71" selection-start-column="97" selection-end-line="71" selection-end-column="97" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="systemtwo.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/systemtwo.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3401">
+              <caret line="249" selection-start-line="249" selection-end-line="249" />
             </state>
           </provider>
         </entry>
@@ -100,20 +136,20 @@
         <option value="$PROJECT_DIR$/static/css/main-styles.css" />
         <option value="$PROJECT_DIR$/static/js/calls/table.data.js" />
         <option value="$PROJECT_DIR$/systemone.py" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/userstudy.html" />
         <option value="$PROJECT_DIR$/templates/userstudysecond.html" />
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/templates/userstudyfirst.html" />
         <option value="$PROJECT_DIR$/templates/userstudybio.html" />
-        <option value="$PROJECT_DIR$/templates/diverse.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Diversifier.py" />
         <option value="$PROJECT_DIR$/Sentiment/SentimentMethod1.py" />
-        <option value="$PROJECT_DIR$/irweb.py" />
         <option value="$PROJECT_DIR$/templates/userstudythird.html" />
         <option value="$PROJECT_DIR$/templates/userstudyfourth.html" />
         <option value="$PROJECT_DIR$/templates/userstudyfifth.html" />
+        <option value="$PROJECT_DIR$/templates/diverse.html" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/irweb.py" />
       </list>
     </option>
   </component>
@@ -134,6 +170,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -160,7 +197,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -296,13 +332,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50292826" side_tool="true" weight="0.32913387" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49707174" weight="0.35930046" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49707174" visible="true" weight="0.354531" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20058565" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -312,10 +349,10 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3296355" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3296355" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
     </layout>
@@ -332,17 +369,24 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/templates/userstudythird.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1377">
+          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/irweb.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
           <folding>
             <element signature="e#0#93#0" expanded="true" />
-            <marker date="1522995443593" expanded="true" signature="3934:3974" ph="INSERT INTO biodata... " />
-            <marker date="1522995443593" expanded="true" signature="4647:4686" ph="INSERT INTO skills... " />
-            <marker date="1522995443593" expanded="true" signature="5865:5917" ph="INSERT INTO taskone... " />
-            <marker date="1522995443593" expanded="true" signature="7058:7112" ph="INSERT INTO tasktwo... " />
-            <marker date="1522995443593" expanded="true" signature="8319:8377" ph="INSERT INTO taskthree... " />
+            <marker date="1523186253826" expanded="true" signature="4681:4721" ph="INSERT INTO biodata... " />
+            <marker date="1523186253826" expanded="true" signature="5394:5433" ph="INSERT INTO skills... " />
+            <marker date="1523186253826" expanded="true" signature="6612:6664" ph="INSERT INTO taskone... " />
+            <marker date="1523186253826" expanded="true" signature="7805:7859" ph="INSERT INTO tasktwo... " />
+            <marker date="1523186253826" expanded="true" signature="9066:9124" ph="INSERT INTO taskthree... " />
           </folding>
         </state>
       </provider>
@@ -374,11 +418,11 @@
           <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
           <folding>
             <element signature="e#0#93#0" expanded="true" />
-            <marker date="1522995443593" expanded="true" signature="3934:3974" ph="INSERT INTO biodata... " />
-            <marker date="1522995443593" expanded="true" signature="4647:4686" ph="INSERT INTO skills... " />
-            <marker date="1522995443593" expanded="true" signature="5865:5917" ph="INSERT INTO taskone... " />
-            <marker date="1522995443593" expanded="true" signature="7058:7112" ph="INSERT INTO tasktwo... " />
-            <marker date="1522995443593" expanded="true" signature="8319:8377" ph="INSERT INTO taskthree... " />
+            <marker date="1523186253826" expanded="true" signature="4681:4721" ph="INSERT INTO biodata... " />
+            <marker date="1523186253826" expanded="true" signature="5394:5433" ph="INSERT INTO skills... " />
+            <marker date="1523186253826" expanded="true" signature="6612:6664" ph="INSERT INTO taskone... " />
+            <marker date="1523186253826" expanded="true" signature="7805:7859" ph="INSERT INTO tasktwo... " />
+            <marker date="1523186253826" expanded="true" signature="9066:9124" ph="INSERT INTO taskthree... " />
           </folding>
         </state>
       </provider>
@@ -410,11 +454,11 @@
           <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
           <folding>
             <element signature="e#0#93#0" expanded="true" />
-            <marker date="1522995443593" expanded="true" signature="3934:3974" ph="INSERT INTO biodata... " />
-            <marker date="1522995443593" expanded="true" signature="4647:4686" ph="INSERT INTO skills... " />
-            <marker date="1522995443593" expanded="true" signature="5865:5917" ph="INSERT INTO taskone... " />
-            <marker date="1522995443593" expanded="true" signature="7058:7112" ph="INSERT INTO tasktwo... " />
-            <marker date="1522995443593" expanded="true" signature="8319:8377" ph="INSERT INTO taskthree... " />
+            <marker date="1523186253826" expanded="true" signature="4681:4721" ph="INSERT INTO biodata... " />
+            <marker date="1523186253826" expanded="true" signature="5394:5433" ph="INSERT INTO skills... " />
+            <marker date="1523186253826" expanded="true" signature="6612:6664" ph="INSERT INTO taskone... " />
+            <marker date="1523186253826" expanded="true" signature="7805:7859" ph="INSERT INTO tasktwo... " />
+            <marker date="1523186253826" expanded="true" signature="9066:9124" ph="INSERT INTO taskthree... " />
           </folding>
         </state>
       </provider>
@@ -445,11 +489,11 @@
         <state>
           <folding>
             <element signature="e#0#93#0" expanded="true" />
-            <marker date="1522995443593" expanded="true" signature="3934:3974" ph="INSERT INTO biodata... " />
-            <marker date="1522995443593" expanded="true" signature="4647:4686" ph="INSERT INTO skills... " />
-            <marker date="1522995443593" expanded="true" signature="5865:5917" ph="INSERT INTO taskone... " />
-            <marker date="1522995443593" expanded="true" signature="7058:7112" ph="INSERT INTO tasktwo... " />
-            <marker date="1522995443593" expanded="true" signature="8319:8377" ph="INSERT INTO taskthree... " />
+            <marker date="1523186253826" expanded="true" signature="4681:4721" ph="INSERT INTO biodata... " />
+            <marker date="1523186253826" expanded="true" signature="5394:5433" ph="INSERT INTO skills... " />
+            <marker date="1523186253826" expanded="true" signature="6612:6664" ph="INSERT INTO taskone... " />
+            <marker date="1523186253826" expanded="true" signature="7805:7859" ph="INSERT INTO tasktwo... " />
+            <marker date="1523186253826" expanded="true" signature="9066:9124" ph="INSERT INTO taskthree... " />
           </folding>
         </state>
       </provider>
@@ -473,11 +517,11 @@
         <state>
           <folding>
             <element signature="e#0#93#0" expanded="true" />
-            <marker date="1522995443593" expanded="true" signature="3934:3974" ph="INSERT INTO biodata... " />
-            <marker date="1522995443593" expanded="true" signature="4647:4686" ph="INSERT INTO skills... " />
-            <marker date="1522995443593" expanded="true" signature="5865:5917" ph="INSERT INTO taskone... " />
-            <marker date="1522995443593" expanded="true" signature="7058:7112" ph="INSERT INTO tasktwo... " />
-            <marker date="1522995443593" expanded="true" signature="8319:8377" ph="INSERT INTO taskthree... " />
+            <marker date="1523186253826" expanded="true" signature="4681:4721" ph="INSERT INTO biodata... " />
+            <marker date="1523186253826" expanded="true" signature="5394:5433" ph="INSERT INTO skills... " />
+            <marker date="1523186253826" expanded="true" signature="6612:6664" ph="INSERT INTO taskone... " />
+            <marker date="1523186253826" expanded="true" signature="7805:7859" ph="INSERT INTO tasktwo... " />
+            <marker date="1523186253826" expanded="true" signature="9066:9124" ph="INSERT INTO taskthree... " />
           </folding>
         </state>
       </provider>
@@ -501,11 +545,11 @@
         <state>
           <folding>
             <element signature="e#0#93#0" expanded="true" />
-            <marker date="1522995443593" expanded="true" signature="3934:3974" ph="INSERT INTO biodata... " />
-            <marker date="1522995443593" expanded="true" signature="4647:4686" ph="INSERT INTO skills... " />
-            <marker date="1522995443593" expanded="true" signature="5865:5917" ph="INSERT INTO taskone... " />
-            <marker date="1522995443593" expanded="true" signature="7058:7112" ph="INSERT INTO tasktwo... " />
-            <marker date="1522995443593" expanded="true" signature="8319:8377" ph="INSERT INTO taskthree... " />
+            <marker date="1523186253826" expanded="true" signature="4681:4721" ph="INSERT INTO biodata... " />
+            <marker date="1523186253826" expanded="true" signature="5394:5433" ph="INSERT INTO skills... " />
+            <marker date="1523186253826" expanded="true" signature="6612:6664" ph="INSERT INTO taskone... " />
+            <marker date="1523186253826" expanded="true" signature="7805:7859" ph="INSERT INTO tasktwo... " />
+            <marker date="1523186253826" expanded="true" signature="9066:9124" ph="INSERT INTO taskthree... " />
           </folding>
         </state>
       </provider>
@@ -529,11 +573,11 @@
         <state>
           <folding>
             <element signature="e#0#93#0" expanded="true" />
-            <marker date="1522995443593" expanded="true" signature="3934:3974" ph="INSERT INTO biodata... " />
-            <marker date="1522995443593" expanded="true" signature="4647:4686" ph="INSERT INTO skills... " />
-            <marker date="1522995443593" expanded="true" signature="5865:5917" ph="INSERT INTO taskone... " />
-            <marker date="1522995443593" expanded="true" signature="7058:7112" ph="INSERT INTO tasktwo... " />
-            <marker date="1522995443593" expanded="true" signature="8319:8377" ph="INSERT INTO taskthree... " />
+            <marker date="1523186253826" expanded="true" signature="4681:4721" ph="INSERT INTO biodata... " />
+            <marker date="1523186253826" expanded="true" signature="5394:5433" ph="INSERT INTO skills... " />
+            <marker date="1523186253826" expanded="true" signature="6612:6664" ph="INSERT INTO taskone... " />
+            <marker date="1523186253826" expanded="true" signature="7805:7859" ph="INSERT INTO tasktwo... " />
+            <marker date="1523186253826" expanded="true" signature="9066:9124" ph="INSERT INTO taskthree... " />
           </folding>
         </state>
       </provider>
@@ -595,9 +639,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/table/jquery.dataTables.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/calls/table.data.js" />
     <entry file="file://$PROJECT_DIR$/templates/userstudysecond.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -629,51 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Diversifier.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Sentiment/SentimentMethod1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/systemtwo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3893">
-          <caret line="249" selection-start-line="249" selection-end-line="249" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/diverse.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2567">
-          <caret line="151" column="21" selection-start-line="151" selection-start-column="21" selection-end-line="151" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/userstudyfirst.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9">
-          <caret line="128" column="115" selection-start-line="128" selection-start-column="115" selection-end-line="128" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="112" column="26" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2661">
@@ -681,46 +677,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/irweb.py">
+    <entry file="file://$PROJECT_DIR$/Diversifier.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1819">
-          <caret line="113" column="30" lean-forward="true" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="30" />
+        <state relative-caret-position="-850">
+          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sentiment/SentimentMethod1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
           <folding>
-            <element signature="e#0#93#0" expanded="true" />
-            <marker date="1522995443593" expanded="true" signature="3934:3974" ph="INSERT INTO biodata... " />
-            <marker date="1522995443593" expanded="true" signature="4647:4686" ph="INSERT INTO skills... " />
-            <marker date="1522995443593" expanded="true" signature="5865:5917" ph="INSERT INTO taskone... " />
-            <marker date="1522995443593" expanded="true" signature="7058:7112" ph="INSERT INTO tasktwo... " />
-            <marker date="1522995443593" expanded="true" signature="8319:8377" ph="INSERT INTO taskthree... " />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/userstudyfirst.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="128" column="115" selection-start-line="128" selection-start-column="115" selection-end-line="128" selection-end-column="115" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/userstudyfourth.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="75" column="27" lean-forward="true" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="113" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/userstudybio.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="66" column="13" lean-forward="true" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/userstudyfifth.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="72" column="110" selection-start-line="72" selection-start-column="110" selection-end-line="72" selection-end-column="110" />
+        <state relative-caret-position="75">
+          <caret line="71" column="16" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="104" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/userstudythird.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+        <state relative-caret-position="167">
+          <caret line="72" selection-start-line="72" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/userstudyfifth.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="71" column="97" selection-start-line="71" selection-start-column="97" selection-end-line="71" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/diverse.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="156" column="147" selection-start-line="156" selection-start-column="147" selection-end-line="156" selection-end-column="147" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/userstudybio.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/systemtwo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3401">
+          <caret line="249" selection-start-line="249" selection-end-line="249" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/irweb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="147" column="47" lean-forward="true" selection-start-line="147" selection-start-column="47" selection-end-line="147" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#93#0" expanded="true" />
+            <marker date="1523186253826" expanded="true" signature="4681:4721" ph="INSERT INTO biodata... " />
+            <marker date="1523186253826" expanded="true" signature="5394:5433" ph="INSERT INTO skills... " />
+            <marker date="1523186253826" expanded="true" signature="6612:6664" ph="INSERT INTO taskone... " />
+            <marker date="1523186253826" expanded="true" signature="7805:7859" ph="INSERT INTO tasktwo... " />
+            <marker date="1523186253826" expanded="true" signature="9066:9124" ph="INSERT INTO taskthree... " />
+          </folding>
         </state>
       </provider>
     </entry>

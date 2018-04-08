@@ -15,12 +15,12 @@ cursor = conn.cursor()
 
 
 @app.route('/', methods=['GET'])
-@app.route('/ir/systemone/home', methods=['GET'])
+@app.route('/ir/mercury/home', methods=['GET'])
 def showsystemonehome():
 
     return render_template('index.html')
 
-@app.route('/ir/systemone/query', methods=['GET'])
+@app.route('/ir/mercury/query', methods=['GET'])
 def systemhome():
     start = request.args.get('start', default=1, type=int)
     length = request.args.get('length', default=10, type=int)
@@ -65,7 +65,8 @@ def systemhome():
     return jsonify(finalout)
 
 
-@app.route('/ir/systemtwo/home')
+@app.route('/ir/pluto/home')
+@app.route('/ir/venus/home')
 def showsystemtwohome():
     return render_template('diverse.html')
 
@@ -108,20 +109,47 @@ def showuserstudy():
         sex = request.form.get('sex')
         course = request.form.get('course')
         semester = request.form.get('semester')
+
         firstSystemUsed = ''
         secondSystemUsed = ''
+        thirdSystemUsed = ''
+
         # generate the order of the first two system using random number;
-        system = randint(1,10)
+        cursor.execute("select presentvalue from usertracker")
+        # presentvalue = cursor.fetchone()
+        result_set = cursor.fetchall()
+        for row in result_set:
+            presentvalue = row[0]
 
-        if system % 2 == 0:
-            firstSystemUsed = 'systemOne'
-            secondSystemUsed = 'systemTwo'
-        else:
-            firstSystemUsed = 'systemTwo'
-            secondSystemUsed = 'systemOne'
+        print(presentvalue)
 
-        session['firstSystemUsed'] = firstSystemUsed
-        session['secondSystemUsed'] = secondSystemUsed
+        if session.get('userTracker') is None:
+
+            session['userTracker'] = presentvalue + 1;
+
+
+
+        presentvalue = session['userTracker']
+
+        # update the user tracker value in the db
+        cursor.execute('update usertracker set presentvalue = ?',(presentvalue,))
+
+        orderChoice = session['userTracker'] % 4
+
+        order = [];
+
+        if orderChoice == 0 :
+            order = ['mercury','venus','pluto']
+        if orderChoice == 1:
+            order = ['mercury','pluto','pluto']
+        if orderChoice == 2:
+            order = ['pluto','mercury','mercury']
+        if orderChoice == 3:
+            order = ['pluto','mercury','venus']
+
+        session['firstSystemUsed'] = order[0]
+        session['secondSystemUsed'] = order[1]
+        session['thirdSystemUsed'] = order[2]
 
 
         allchar = string.ascii_lowercase + string.digits
@@ -250,4 +278,4 @@ def showuserstudyfive():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='192.168.137.1')
