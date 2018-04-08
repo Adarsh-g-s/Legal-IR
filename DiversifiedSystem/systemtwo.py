@@ -115,11 +115,13 @@ class SearchTwo:
             docList = []
             scoreList = []
             resHitList = []
-            # counter = 0
+            counter = 0
             for hit in immediateResult:
-                # counter = counter+1
-                docList.append(hit['path'])
-                scoreList.append(hit.score)
+                # The 'k' most diverse docs shall be searched in the 100 most relevant docs.
+                # TODO: Find better cut off.
+                if counter < 100:
+                    docList.append(hit['path'])
+                    counter = counter + 1
                 resHitList.append(hit)
                 # if counter==10:
                 # break
@@ -127,13 +129,12 @@ class SearchTwo:
             # Pass the document path to the Diversifier
             diversifier = Diversifier(docList, resHitList)
             k = 20
-            diverseFileList, diverseDocScoreList = diversifier.findMostDiverse(k)
+            resultSize = len(docList)
+            if( k > resultSize ): k = resultSize
+            diverseFileList, diverseDocScoreList, sumX, sumY = diversifier.findMostDiverse(k)
 
             # Remove the top 'k' from the entire list & add them at the beginning for the final list.
-            for nDocIdx in range(k - 1, 0, -1):
-                if diverseFileList[nDocIdx] in docList:
-                    docList.remove(diverseFileList[nDocIdx])
-                docList.insert(0, diverseFileList[nDocIdx])
+            for nDocIdx in range(k - 1, -1, -1):
                 for whooshHit in resHitList:
                     if whooshHit.score == diverseDocScoreList[nDocIdx]:
                         resHitList.remove(whooshHit)
