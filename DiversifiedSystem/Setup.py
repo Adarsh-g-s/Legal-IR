@@ -152,7 +152,7 @@ class Setup:
         'Location of the index folder'
         currentDirectory = os.getcwd()
 #creating an index directory
-        setup.indexDirectory=os.path.join(currentDirectory,"index")
+        setup.indexDirectory= currentDirectory + '\..\index' #os.path.join(currentDirectory,"index")
         if not os.path.exists(setup.indexDirectory):
             os.makedirs(setup.indexDirectory)
 #         print(setup.indexDirectory)
@@ -246,7 +246,7 @@ while (True):
             k = 20
             resultSize = len(docList)
             if( k > resultSize ): k = resultSize
-            diverseFileList, diverseDocScoreList = diversifier.findMostDiverse(k)
+            diverseFileList, diverseDocScoreList, sumX, sumY = diversifier.findMostDiverse(k)
 
             # Remove the top 'k' from the entire list & add them at the beginning for the final list.
             for nDocIdx in range(k-1, -1, -1):

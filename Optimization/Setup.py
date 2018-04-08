@@ -108,7 +108,7 @@ class Setup:
     Take document path as the user input and pass it to Indexer for Indexing
     '''
 
-    def __init__(self, documentPath, filePath, htmlFileContents,fileTitle, choice, indexDirectory, indexName,sumOfCurrToNext,sumOfPrevToNext,space,docList,scoreList):
+    def __init__(self, documentPath, filePath, htmlFileContents,fileTitle, choice, indexDirectory, indexName,sumOfCurrToNext,sumOfPrevToNext,space,docList,hitList):
         '''
         Constructor
         '''
@@ -122,7 +122,7 @@ class Setup:
         self.sumOfPrevToNext = sumOfPrevToNext
         self.sumOfCurrToNext = sumOfCurrToNext
         self.space = space
-        self.scoreList = scoreList
+        self.hitList = hitList
         self.docList = docList
     
     def userInput(self):
@@ -163,7 +163,7 @@ class Setup:
         'Location of the index folder'
         currentDirectory = os.getcwd()
 #creating an index directory
-        setup.indexDirectory=os.path.join(currentDirectory,"index")
+        setup.indexDirectory= currentDirectory + '\..\index' #os.path.join(currentDirectory,"index")
         if not os.path.exists(setup.indexDirectory):
             os.makedirs(setup.indexDirectory)
 #         print(setup.indexDirectory)
@@ -192,16 +192,16 @@ class Setup:
     
     def objective(self,space):
         a = space['a']
-        b = 2-a # space['b']
-        diversifier = Diversifier(setup.docList, setup.scoreList)
+        b = space['b']
+        diversifier = Diversifier(setup.docList, setup.hitList)
         k = 20
         if( k > len(setup.docList) ): k = len(setup.docList)
         diversifier.alpha = a
         diversifier.beta = b
-        diverseResult,setup.sumOfCurrToNext,setup.sumOfPrevToNext = diversifier.findMostDiverse(k)
+        diverseResult, scoreList, setup.sumOfCurrToNext,setup.sumOfPrevToNext = diversifier.findMostDiverse(k)
         return -(a * setup.sumOfCurrToNext + b * setup.sumOfPrevToNext)
                     
-setup = Setup(documentPath = None, filePath = None, htmlFileContents= None, fileTitle = None, choice = None, indexDirectory=None, indexName = None,sumOfCurrToNext = None,sumOfPrevToNext = None,space = None,docList = None, scoreList = None )
+setup = Setup(documentPath = None, filePath = None, htmlFileContents= None, fileTitle = None, choice = None, indexDirectory=None, indexName = None,sumOfCurrToNext = None,sumOfPrevToNext = None,space = None,docList = None, hitList = None )
 
 while (True):
     indexDirectory = setup.getIndexDirectory()
@@ -256,22 +256,20 @@ while (True):
 
             # Prepare the list of document paths
             setup.docList = []
-            setup.scoreList = []
+            setup.hitList = []
             counter = 0
             for hit in immediateResult:
                 # The 'k' most diverse docs shall be searched in the 100 most relevant docs.
                 # TODO: Find better cut off.
                 if counter < 100:
                     setup.docList.append(hit['path'])
-                    setup.scoreList.append(hit.score)
                     counter = counter + 1
+                setup.hitList.append(hit)
 
             # Pass the document path to the Diversifier
 #             diversifier = Diversifier(docList, scoreList)
 #             k = 20
 #             diverseResult,setup.sumOfCurrToNext,setup.sumOfPrevToNext = diversifier.findMostDiverse(k)
-#             print("CurrToNext: ",setup.sumOfCurrToNext)
-#             print("PrevToNext: ",setup.sumOfPrevToNext)
             '''
             # Remove the top 'k' from the entire list & add them at the beginning for the final list.
             for fileName in reversed(diverseResult):
@@ -302,8 +300,8 @@ while (True):
             
             '''
             setup.space={
-                'a': hp.uniform ('a',0,2)#,
-                #'b': hp.uniform ('b',0,1)
+                'a': hp.uniform ('a',0.6,1),
+                'b': hp.uniform ('b',0,0.6)
                 }
      
             '''
@@ -311,7 +309,7 @@ while (True):
             '''
  
             # The Trials object will store details of each iteration
-            seed = 1000
+            seed = 150
             trials = Trials()
             
             best = fmin(fn=setup.objective,

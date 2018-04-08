@@ -4,10 +4,6 @@ from SentimentMethod2 import sentiment_method2 as sm2
 
 class Diversifier(object):
     """This class is responsible for deversifying the set of documents."""
-
-    # TODO: alpha & beta parameters found using hyper parameter tuning is to be used here.    
-    alpha = 0.9860618479706023 # The proportion of distance between current and next dec
-    beta  = 0.0139381520293977 # The proportion of distance between previous and next dec
     def __init__(self, originalFileList, originalHitList):
         self.originalFileList = originalFileList
         self.originalHitList = originalHitList
@@ -19,6 +15,9 @@ class Diversifier(object):
         self.diverseDocSet = set()
         self.sumOfCurrToNext = 0
         self.sumOfPrevToNext = 0
+        # alpha & beta parameters found using hyper parameter tuning is to be used here.    
+        self.alpha = 0.9683331071230177 # The proportion of distance between current and next dec
+        self.beta  = 0.5707760724661901 # The proportion of distance between previous and next dec
 
 
     def findMostDiverse(self, docCount):
@@ -86,7 +85,7 @@ class Diversifier(object):
             self.currentDoc = farthestdoc
             self.distListToPrevDoc = self.distListToCurrentDoc
 
-        return docSetList, diverseDocScoreList
+        return docSetList, diverseDocScoreList, self.sumOfCurrToNext, self.sumOfPrevToNext
 
 
     def __getFarthestDoc(self):
@@ -99,7 +98,7 @@ class Diversifier(object):
             distArray = self.distListToCurrentDoc
         else:
             # Calculate element wise sum of both arrays.
-            distArray = (Diversifier.alpha * self.distListToCurrentDoc) + (Diversifier.beta * self.distListToPrevDoc)
+            distArray = (self.alpha * self.distListToCurrentDoc) + (self.beta * self.distListToPrevDoc)
         
         highIndex = distArray.argmax()
         if highIndex in self.diverseDocSet:
