@@ -1,6 +1,5 @@
 '''
 Created on Feb 27, 2018
-
 @author: adarsh
 '''
 from __future__ import division
@@ -86,11 +85,11 @@ class SearchTwo:
         return htmlContent
 
     def getIndexDirectory(self):
-        # Location of the index folder
-        setup.indexDirectory = os.getcwd() + '\..\index'
-        if not os.path.exists(setup.indexDirectory):
-            os.makedirs(setup.indexDirectory)
-        return setup.indexDirectory
+        indexDirectory = os.getcwd() + '\..\index'
+        if not os.path.exists(indexDirectory):
+            os.makedirs(indexDirectory)
+
+        return indexDirectory
 
 
     @staticmethod
@@ -98,7 +97,7 @@ class SearchTwo:
 
 
         search = SearchTwo()
-        indexDirectory = search.getIndexDirectory
+        indexDirectory = search.getIndexDirectory()
         indexReader = open_dir(indexDirectory)
         indexer = Indexer()
         queryParser = search.getTheQueryParser(indexer)
@@ -151,8 +150,7 @@ class SearchTwo:
                 result = {
                     'relevantScore': found.score,
                     'title': title, #just pick the first element
-                    'path': pathlib.Path(found['path']).as_uri(),
-                    # 'path': found['path'].split("Legalfiles")[1],
+                    'path': found['path'].split("Legalfiles")[1],
 
                     'summary': summary
                 }

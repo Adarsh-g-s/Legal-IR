@@ -1,7 +1,10 @@
 import numpy as np
 import pandas as pd
 import nltk
+nltk.downloader.download('vader_lexicon')
+nltk.download('punkt')
 import string
+import os
 from collections import Counter
 import re
 from textblob import TextBlob
@@ -13,6 +16,7 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 class feat_analyser:
     global lexicon_directory
     lexicon_directory = '../Data/opinion-lexicon-English'
+
     global data_dir
     data_dir = '../Data'
     global html_text

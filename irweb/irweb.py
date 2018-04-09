@@ -2,7 +2,6 @@ from flask import Flask, flash, session, render_template, jsonify, request, redi
 import sqlite3
 import string
 from random import *
-import time
 
 from systemone import *
 from systemtwo import *
@@ -53,14 +52,12 @@ def systemhome():
         result = {
             'relevantScore': found.score,
             'title': title, #just pick the first element
-            # 'path': pathlib.Path(found['path']).as_uri(),
             'path': found['path'].split("Legalfiles")[1],
-            # 'path': pathlib.Path('file:///C:/Users/Oyewale/Desktop/legalfiles/delfamct_html/delfamct_html/1444077.html').as,
             'summary': summary
         }
 
         outputs.append(result)
-        # time.sleep(40)
+
 
     finalout = {
         'data': outputs,
@@ -84,8 +81,10 @@ def systemtwohome():
     filter = request.args.get('filter', default="no", type=str)
     draw = request.args.get('draw', default=1, type=int)
     query = request.args.get('query', type=str)
+    # query = 'refugee'
     # start = 1
     # length = 10
+    # draw = 1
 
 
     if start == 10:
@@ -117,13 +116,9 @@ def showuserstudy():
         course = request.form.get('course')
         semester = request.form.get('semester')
 
-        firstSystemUsed = ''
-        secondSystemUsed = ''
-        thirdSystemUsed = ''
-
         # generate the order of the first two system using random number;
         cursor.execute("select presentvalue from usertracker")
-        # presentvalue = cursor.fetchone()
+
         result_set = cursor.fetchall()
         for row in result_set:
             presentvalue = row[0]
@@ -284,4 +279,6 @@ def showuserstudyfive():
 
 
 if __name__ == '__main__':
-    app.run(host='192.168.137.1')
+    # app.run(host='192.168.137.1')
+    # app.run(debug=True)
+     app.run()

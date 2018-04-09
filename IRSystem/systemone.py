@@ -82,6 +82,7 @@ class Search:
 
         search = Search()
         indexDirectory = search.getIndexDirectory()
+
         indexReader = open_dir(indexDirectory)
         indexer = Indexer()
         queryParser = search.getTheQueryParser(indexer)
