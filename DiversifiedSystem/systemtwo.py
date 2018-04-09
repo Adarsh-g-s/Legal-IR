@@ -107,7 +107,7 @@ class SearchTwo:
 
             # Get all the search result with limit = None
             immediateResult = searcher.search(query, limit = None)
-            #immediateResult.fragmenter.surround = 500
+            immediateResult.fragmenter.surround = 500
             # print(immediateResult)
 
 
@@ -139,7 +139,6 @@ class SearchTwo:
                     if whooshHit.score == diverseDocScoreList[nDocIdx]:
                         resHitList.remove(whooshHit)
                         resHitList.insert(0, whooshHit)
-                        resHitList.fragmenter.surround = 500
                         break
 
             outputs = []
