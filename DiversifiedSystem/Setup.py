@@ -86,6 +86,7 @@ class Search:
         results = searcher.search_page(query, pageNumber)
         #results = searcher.search(query)
         #results.fragmenter = highlight.WholeFragmenter()
+        results.results.fragmenter.surround = 500
         print("Showing ", results.scored_length()," out of ", len(results), "results")
         #         print(results)
         for found in results:

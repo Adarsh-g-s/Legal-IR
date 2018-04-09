@@ -65,6 +65,7 @@ class Search:
         indexReader = open_dir(indexDirectory)
         searcher = indexReader.searcher(weighting=scoring.BM25F(B=0.75, K1=1.5))
         results = searcher.search_page(query,pageNumber,pagelen=pageLength)
+        results.results.fragmenter.surround = 500
         # results = searcher.search(query, limit=100)
         # results = searcher.search_page(query, 1)
 
