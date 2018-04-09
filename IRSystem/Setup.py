@@ -151,7 +151,7 @@ class Setup:
         'Location of the index folder'
         currentDirectory = os.getcwd()
 #creating an index directory
-        setup.indexDirectory=os.path.join(currentDirectory,"index")
+        setup.indexDirectory= currentDirectory + '\..\index' #os.path.join(currentDirectory,"index")
         if not os.path.exists(setup.indexDirectory):
             os.makedirs(setup.indexDirectory)
 #         print(setup.indexDirectory)
