@@ -26,7 +26,7 @@ class sentiment_method1:
 
     def sent_dist_matrix_calc(data_dir):
         #load classifier
-        clf = joblib.load('Sentiment\svmClasifier.pkl')
+        clf = joblib.load('svmClasifier.pkl')
 
         feature_cols_train = ['negative_word_count', 'positive_word_count', 'vander_score']#, 'happ_score'  excluded
 

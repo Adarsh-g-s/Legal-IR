@@ -12,7 +12,7 @@ from sklearn.metrics import recall_score
 from sklearn.externals import joblib
 
 
-load=pd.read_csv('..\\DATA\\training_data_balanced.csv',delimiter=',',skipinitialspace=True)
+load=pd.read_csv('C:\\Users\\Oyewale\\Desktop\\IR Project\\Legal-IR\\DATA\\training_data_balanced.csv',delimiter=',',skipinitialspace=True)
 
 feature_cols_train=['negative_word_count','positive_word_count','vander_score']#happiness_score excluded
 

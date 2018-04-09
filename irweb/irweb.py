@@ -1,18 +1,23 @@
-from flask import Flask, flash, session, render_template, jsonify, request, redirect, url_for
+from flask import Flask, flash, session, render_template, jsonify, request, redirect, url_for,send_from_directory
 import sqlite3
 import string
 from random import *
+import time
 
 from systemone import *
 from systemtwo import *
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 app.secret_key = 'dslfdsls3993jdshfsd'
 # conn = sqlite3.connect("C:\Users\Oyewale\Desktop\IR Project\Legal-IR\irweb\data\mydatabase.db")
 conn = sqlite3.connect("C:\\Users\\Oyewale\\Desktop\\mydatabase.db")
 # conn = sqlite3.connect("mydatabase.db")
 cursor = conn.cursor()
 
+
+@app.route('/legalfiles/<path:path>')
+def send_js(path):
+    return send_from_directory('legalfiles', path)
 
 @app.route('/', methods=['GET'])
 @app.route('/ir/mercury/home', methods=['GET'])
@@ -50,10 +55,12 @@ def systemhome():
             'title': title, #just pick the first element
             # 'path': pathlib.Path(found['path']).as_uri(),
             'path': found['path'].split("Legalfiles")[1],
+            # 'path': pathlib.Path('file:///C:/Users/Oyewale/Desktop/legalfiles/delfamct_html/delfamct_html/1444077.html').as,
             'summary': summary
         }
 
         outputs.append(result)
+        # time.sleep(40)
 
     finalout = {
         'data': outputs,
@@ -70,7 +77,7 @@ def systemhome():
 def showsystemtwohome():
     return render_template('diverse.html')
 
-@app.route('/ir/systemtwo/query', methods=['GET'])
+@app.route('/ir/venus/query', methods=['GET'])
 def systemtwohome():
     start = request.args.get('start', default=1, type=int)
     length = request.args.get('length', default=10, type=int)
@@ -120,8 +127,6 @@ def showuserstudy():
         result_set = cursor.fetchall()
         for row in result_set:
             presentvalue = row[0]
-
-        print(presentvalue)
 
         if session.get('userTracker') is None:
 
@@ -267,6 +272,7 @@ def showuserstudyfive():
         conn.commit()
 
         session.pop('session_id', None)
+        session.pop('userTracker', None)
 
         # session['final_remark'] = 'You are done with the tasks, thanks for your time';
 
