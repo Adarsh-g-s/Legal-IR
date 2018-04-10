@@ -81,21 +81,9 @@ def systemtwohome():
     filter = request.args.get('filter', default="no", type=str)
     draw = request.args.get('draw', default=1, type=int)
     query = request.args.get('query', type=str)
-    # query = 'refugee'
-    # start = 1
-    # length = 10
-    # draw = 1
 
-
-    if start == 10:
-        start = 1;
-
-    if start > 10:
-        start = start // length
-
-    start = start + 1;
     search = SearchTwo()
-    response = search.passingQuery(query, start, length)
+    response = search.passingQuery(query)
 
     finalout = {
         'data': response,

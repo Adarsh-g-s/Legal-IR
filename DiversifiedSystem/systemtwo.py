@@ -93,7 +93,7 @@ class SearchTwo:
 
 
     @staticmethod
-    def passingQuery(queryInput, pageNumber, pageLength):
+    def passingQuery(queryInput):
 
 
         search = SearchTwo()
