@@ -62,11 +62,11 @@ class Search:
         print(rank)
         print("Relevance Score: ",found.score)
         #Store the first score and use it for normalization
-        if(rank == 1):
-            highestScore = found.score
-        
-        normalizedScore = found.score/highestScore
-        print("Normalized Relevance Score: ",normalizedScore)
+#         if(rank == 1):
+#             highestScore = found.score
+#         
+#         normalizedScore = found.score/highestScore
+#         print("Normalized Relevance Score: ",normalizedScore)
         #Title could be longer than a line, split and display
         title = found['title']
         title = title.split(';',maxsplit=2)
@@ -84,7 +84,7 @@ class Search:
         results = searcher.search_page(query, pageNumber)
         #results = searcher.search(query)
         #results.fragmenter = highlight.WholeFragmenter()
-        results.results.fragmenter.surround = 500
+        results.results.fragmenter.surround = 50
         print("Showing ", results.scored_length()," out of ", len(results), "results")
         #         print(results)
                 
