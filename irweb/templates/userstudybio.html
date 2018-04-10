@@ -92,22 +92,26 @@
                         <div id="phone-section">
                             <div class="col-sm-6 nopadding-left ">
                                 <div class="form-group">
+OCCUPATION:
+                                    <select class="form-control" name="occupation" id="occupation">
+                                        <option value="RESEARCHER">RESEARCHER</option>
+                                        <option value="LECTURER">LECTURER</option>
+                                        <option value="STUDENT">STUDENT</option>
+                                        <option value="LAWYER">LAWYER</option>
 
-                                    <input type="text" id="occupation" name="occupation" class="form-control" required placeholder="OCCUPATION">
-                                    <span class="help-block">
-                                        <strong></strong>
-                                    </span>
 
+
+
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="col-sm-6 nopadding-right">
                                 <div class="form-group">
-                                    <div class="form-group">
+                                 AGE:
                                         <input id="username" type="text" class="form-control" required name="age"
-                                               placeholder='AGE'>
+                                               placeholder='AGE' pattern="[0-9]{2}" title="2 digits representing your age">
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -116,22 +120,33 @@
                         <div id="student-data"  style="display: none" >
                             <div class="col-sm-6 nopadding-left ">
                                 <div class="form-group">
+SEMESTER:
+                                    <select class="form-control" name="semester" id="semCategory">
+                                        <option value="FIRST">FIRST</option>
+                                        <option value="SECOND">SECOND</option>
+                                        <option value="THIRD">THIRD</option>
+                                        <option value="FOURTH">FOURTH</option>
+                                        <option value="FIFTH">FIFTH</option>
+                                        <option value="SIXTH">SIXTH</option>
+                                        <option value="SEVENTH">SEVENTH</option>
+                                        <option value="EIGHT">EIGHT</option>
+                                        <option value="NINETH">NINETH</option>
+                                        <option value="TENTH">TENTH</option>
 
-                                    <input type="text" id="semester"  class="form-control" name="semester" placeholder="SEMESTER (IF STUDENT)">
-                                    <span class="help-block">
-                                        <strong></strong>
-                                    </span>
+
+
+                                    </select>
 
                                 </div>
                             </div>
 
                             <div class="col-sm-6 nopadding-right">
                                 <div class="form-group">
-                                    <div class="form-group">
+                                   COURSE:
                                         <input id="course" type="text" class="form-control" name="course"
                                                placeholder='COURSE OF STUDY (IF STUDENT)'>
 
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -179,7 +194,7 @@
 
 <script type="text/javascript">
 
-    $("#occupation").bind("change paste keyup", function() {
+    $('select[name=occupation]').change(function() {
         if($(this).val().toUpperCase() === 'STUDENT') {
             document.getElementById('student-data').style.display = 'block';
         }else{

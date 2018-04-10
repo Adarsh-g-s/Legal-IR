@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IR Project</title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+    <!-- Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/animate.css') }}" type="text/css">
+    <link href="{{ url_for('static',filename='css/hover-min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/jquery.bxslider.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main-styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/loader.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/general.css') }}">
+
+
+    <!-- Google Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+
+    <style type="text/css">
+        {.dataTables_filter,.dataTables_info,.dataTables_length { display: none; }}
+        .dataTables_filter, .dataTables_length, .dataTables_wrapper thead {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<!--start add listings inner header section-->
+
+<div id="add-listings-inner-header">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div class="inner-header-text">
+                    <a href=><span>DIVERSIFING SEARCH RESULTS IN LEGAL INFORMATION RETRIEVAL SYSTEM</span></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- start add listings-->
+<div id="add-listings">
+    <div class="container clear">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+
+                <!-- start listings-->
+                <div id="enter-listings">
+                    <h1>PART FOUR : ( Finding relevant and informative documents to given controversial queries.)</h1>
+
+                    <p>Please use the research tool to carry out the following search tasks, you are to carry out the search, open and read through some of the results
+                        and answer the questions afterwards. The selected controversial topics are: <b>Adoption</b>,<b>Refugee</b> and <b>Prostitution</b>.</p><hr>
+
+
+                    <b>After the search, kindly answer the following questions </b>
+                    <form id="title-form" role="form" method="POST" action="/ir/userstudy/32">
+                         <input type="hidden" name="system_used" value="{{ session['firstSystemUsed'] }}">
+
+                        <div id="phone-section">
+                            <div class="col-sm-12 nopadding-left ">
+
+                               a.	Do you feel familiar with the topic now ?
+                                <div class="form-group">
+
+                                    <label class="radio-inline"><input type="radio" name="familiar_now" required value="yes">Yes</label>
+                                    <label class="radio-inline"><input type="radio" name="familiar_now" value="no"> No</label>
+
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="phone-section">
+                          <div class="col-sm-12 nopadding-left ">
+
+                               b.	Were the results relevant to the topic for you ?
+                                <div class="form-group">
+
+                                    Not Relevant
+                                    <label class="radio-inline"><input type="radio" name="relevant" required value="1">1</label>
+                                    <label class="radio-inline"><input type="radio" name="relevant" value="2"> 2</label>
+                                    <label class="radio-inline"><input type="radio" name="relevant" value="3"> 3</label>
+                                    <label class="radio-inline"><input type="radio" name="relevant" value="4"> 4</label>
+                                    <label class="radio-inline"><input type="radio" name="relevant" value="5"> 5</label>
+ Strongly Relevant
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                            <div id="phone-section">
+                       <div class="col-sm-12 nopadding-left ">
+
+                               c.	Were you able to get an overview over the topic ?
+                                <div class="form-group">
+
+                                    <label class="radio-inline"><input type="radio" name="overview" required value="yes">Yes</label>
+                                    <label class="radio-inline"><input type="radio" name="overview" value="no"> No</label>
+
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                         <div id="phone-section">
+                          <div class="col-sm-12 nopadding-left ">
+
+                               d.	Did the system support you in getting an overview about the topic?
+                                <div class="form-group">
+
+                                    <label class="radio-inline"><input type="radio" name="support" required value="yes">Yes</label>
+                                    <label class="radio-inline"><input type="radio" name="support" value="no"> No</label>
+
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                              <div id="phone-section">
+                       <div class="col-sm-12 nopadding-left ">
+
+                               e.	Were the documents in the results similar to each other concerning their opinion towards the topic?
+                                <div class="form-group">
+                                    Not Similar
+
+                                    <label class="radio-inline"><input type="radio" name="similar"  required value="1">1</label>
+                                    <label class="radio-inline"><input type="radio" name="similar" value="2"> 2</label>
+                                    <label class="radio-inline"><input type="radio" name="similar" value="3"> 3</label>
+                                    <label class="radio-inline"><input type="radio" name="similar" value="4"> 4</label>
+                                    <label class="radio-inline"><input type="radio" name="similar" value="5"> 5</label>
+
+                                    Very Similar
+
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                           <div id="phone-section">
+                      <div class="col-sm-12 nopadding-left ">
+
+                               f. Would you use the tool again for search about topics in legal context?
+                          <div class="form-group">
+
+                                    <label class="radio-inline"><input type="radio" name="reuse" required value="yes">Yes</label>
+                                    <label class="radio-inline"><input type="radio" name="reuse" value="no"> No</label>
+
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                         <div id="phone-section">
+                        <div class="col-sm-12 nopadding-left ">
+
+                               g. How would you rate the ease of use of the system after this query ?
+                                <div class="form-group">
+
+                                    <label class="radio-inline"><input type="radio" name="system_rate" required value="1">1</label>
+                                    <label class="radio-inline"><input type="radio" name="system_rate" value="2"> 2</label>
+                                   <label class="radio-inline"><input type="radio" name="system_rate" value="3">3</label>
+                                    <label class="radio-inline"><input type="radio" name="system_rate" value="4"> 4</label>
+                                  <label class="radio-inline"><input type="radio" name="system_rate" value="5"> 5</label>
+                                    </span>
+
+                                </div>
+                            </div>
+
+                         </div>
+                         <div id="phone-section">
+                         <div class="col-sm-12 nopadding-left ">
+
+                               h. were the number of the given results sufficient ?
+                                <div class="form-group">
+
+                                    <label class="radio-inline"><input type="radio" name="sufficient" required value="yes"> Yes</label>
+                                    <label class="radio-inline"><input type="radio" name="sufficient" value="no"> No</label>
+
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
+  <div class="clearfix"></div>
+
+                             <div id="preview-add">
+                                <button type="submit" >Save and Continue</button>
+                            </div>
+                    </form>
+                        <div class="clearfix"></div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<!-- Scripts -->
+
+<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-1.11.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/table/jquery.dataTables.min.js') }}"></script>
+
+
+</body>
+</html>

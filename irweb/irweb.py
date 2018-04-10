@@ -173,12 +173,13 @@ def showuserstudyone():
         session_id = session['session_id']
         language = request.form.get('language')
         proficiency = request.form.get('proficiency')
-        tool = request.form.get('tool')
+        tool = request.form.getlist('tool')
         frequently_legal = request.form.get('frequently_legal')
         frequently = request.form.get('frequently')
+        toolstr = ' '.join(str(e) for e in tool)
 
 
-        skills = [(session_id, language, proficiency,frequently, tool, frequently_legal)]
+        skills = [(session_id, language, proficiency,frequently, toolstr, frequently_legal)]
         cursor.executemany("INSERT INTO skills VALUES (?,?,?,?,?,?)", skills)
         conn.commit()
 
@@ -197,6 +198,21 @@ def showuserstudythree():
         session_id = session['session_id']
         familiar_topic = request.form.get('familiar_topic')
         familiar_context = request.form.get('familiar_context')
+
+
+        task_one = [(session_id, familiar_topic,familiar_context,'','','','','','','','','',)]
+        cursor.executemany("INSERT INTO taskone VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", task_one)
+        conn.commit()
+
+        return redirect(url_for('showuserstudythreetwo'))
+
+
+    return render_template('userstudythird.html')
+
+@app.route('/ir/userstudy/32', methods=['POST', 'GET'])
+def showuserstudythreetwo():
+    if request.method == 'POST':
+        session_id = session['session_id']
         familiar_now = request.form.get('familiar_now')
         relevant = request.form.get('relevant')
         overview = request.form.get('overview')
@@ -207,15 +223,15 @@ def showuserstudythree():
         sufficient = request.form.get('sufficient')
         system_used = request.form.get('system_used')
 
-        task_one = [(session_id, familiar_topic,familiar_context,familiar_now,relevant,overview,
-                     support,similar,reuse,system_rate,sufficient,system_used)]
-        cursor.executemany("INSERT INTO taskone VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", task_one)
+        task_one = [(familiar_now,relevant,overview,
+                     support,similar,reuse,system_rate,sufficient,system_used,session_id)]
+        cursor.executemany("update taskone set familiar_now = ?, relevant = ?, overview = ?, support = ?, similar = ?, reuse = ?, system_rate = ?, sufficient = ?,system_used = ? where sessionid = ?", task_one)
         conn.commit()
 
         return redirect(url_for('showuserstudyfour'))
 
 
-    return render_template('userstudythird.html')
+    return render_template('userstudythirdtwo.html')
 
 @app.route('/ir/userstudy/4', methods=['POST', 'GET'])
 def showuserstudyfour():
@@ -223,6 +239,20 @@ def showuserstudyfour():
         session_id = session['session_id']
         familiar_topic = request.form.get('familiar_topic')
         familiar_context = request.form.get('familiar_context')
+
+        task_two = [(session_id, familiar_topic, familiar_context, '','','','','','','','','')]
+        cursor.executemany("INSERT INTO tasktwo VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", task_two)
+        conn.commit()
+
+        return redirect(url_for('showuserstudyfourtwo'))
+
+    return render_template('userstudyfourth.html')
+
+
+@app.route('/ir/userstudy/42', methods=['POST', 'GET'])
+def showuserstudyfourtwo():
+    if request.method == 'POST':
+        session_id = session['session_id']
         familiar_now = request.form.get('familiar_now')
         relevant = request.form.get('relevant')
         overview = request.form.get('overview')
@@ -231,17 +261,18 @@ def showuserstudyfour():
         reuse = request.form.get('reuse')
         system_rate = request.form.get('system_rate')
         sufficient = request.form.get('sufficient')
-        previous = request.form.get('previous')
         system_used = request.form.get('system_used')
 
-        task_two = [(session_id, familiar_topic, familiar_context, familiar_now, relevant, overview, support, similar,
-                     reuse, system_rate, sufficient, previous,system_used)]
-        cursor.executemany("INSERT INTO tasktwo VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", task_two)
+        task_two = [(session_id, familiar_now, relevant, overview, support, similar,
+                     reuse, system_rate, sufficient,system_used)]
+        cursor.executemany("update tasktwo set familiar_now = ?, relevant = ?, overview = ?, support = ?, similar = ?, reuse = ?, system_rate = ?, sufficient = ?,system_used = ? where sessionid = ?",
+            task_two)
+
         conn.commit()
 
         return redirect(url_for('showuserstudyfive'))
 
-    return render_template('userstudyfourth.html')
+    return render_template('userstudyfourthtwo.html')
 
 @app.route('/ir/userstudy/5', methods=['POST', 'GET'])
 def showuserstudyfive():
@@ -249,6 +280,20 @@ def showuserstudyfive():
         session_id = session['session_id']
         familiar_topic = request.form.get('familiar_topic')
         familiar_context = request.form.get('familiar_context')
+
+        task_three = [(session_id, familiar_topic, familiar_context, '', '', '',
+                       '', '', '', '', '','')]
+        cursor.executemany("INSERT INTO taskthree VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", task_three)
+        conn.commit()
+
+        return redirect(url_for('showuserstudyfivetwo'))
+
+    return render_template('userstudyfifth.html')
+
+@app.route('/ir/userstudy/52', methods=['POST', 'GET'])
+def showuserstudyfivetwo():
+    if request.method == 'POST':
+        session_id = session['session_id']
         familiar_now = request.form.get('familiar_now')
         relevant = request.form.get('relevant')
         overview = request.form.get('overview')
@@ -257,13 +302,31 @@ def showuserstudyfive():
         reuse = request.form.get('reuse')
         system_rate = request.form.get('system_rate')
         sufficient = request.form.get('sufficient')
-        previous = request.form.get('previous')
-        suggestion = request.form.get('suggestion')
         system_used = request.form.get('system_used')
 
-        task_three = [(session_id, familiar_topic, familiar_context, familiar_now, relevant, overview, support, similar,
-                     reuse, system_rate, sufficient, previous, suggestion,system_used)]
-        cursor.executemany("INSERT INTO taskthree VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", task_three)
+        task_three = [(session_id, familiar_now, relevant, overview, support, similar,
+                     reuse, system_rate, sufficient,system_used)]
+        cursor.executemany(
+            "update taskthree set familiar_now = ?, relevant = ?, overview = ?, support = ?, similar = ?, reuse = ?, system_rate = ?, sufficient = ?,system_used = ? where sessionid = ?",
+            task_three)
+        conn.commit()
+
+        return redirect(url_for('showuserstudyfinal'))
+
+    return render_template('userstudyfifthtwo.html')
+
+@app.route('/ir/userstudy/final', methods=['POST', 'GET'])
+def showuserstudyfinal():
+    if request.method == 'POST':
+        session_id = session['session_id']
+        easiest = request.form.get('easiest')
+        helps = request.form.get('helps')
+        suggestion = request.form.get('suggestion')
+        reuse = request.form.get('reuse')
+
+
+        task_final = [(session_id, easiest, helps, reuse, suggestion)]
+        cursor.executemany("INSERT INTO final VALUES (?,?,?,?,?)", task_final)
         conn.commit()
 
         session.pop('session_id', None)
@@ -275,8 +338,7 @@ def showuserstudyfive():
 
         return redirect(url_for('showuserstudy'))
 
-    return render_template('userstudyfifth.html')
-
+    return render_template('userstudyfinal.html')
 
 if __name__ == '__main__':
     # app.run(host='192.168.137.1')

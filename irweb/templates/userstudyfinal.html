@@ -59,22 +59,26 @@
                 <div id="enter-listings">
                     <h1>PART FOUR : ( Finding relevant and informative documents to given controversial queries.)</h1>
 
-                                      <p>Please use the research tool to carry out the following search tasks, you are to carry out the search, open and read through some of the results
+                                        <p>Please use the research tool to carry out the following search tasks, you are to carry out the search, open and read through some of the results
                         and answer the questions afterwards. The selected controversial topics are: <b>Adoption</b>,<b>Refugee</b> and <b>Prostitution</b>.</p><hr>
-
+                             <div class="clearfix"></div>
                     <div id="title">
-                        <b> Task 2: </b>
+                        <b> Comparing the three systems used  </b>
                     </div>
-    <b>Using the System, search for  <b>Adoption</b>  and also get familiar with it based on the search results  </b>
-                    <form id="title-form" role="form" method="POST" action="/ir/userstudy/4">
-                        <div id="phone-section">
-                            <div class="col-sm-12 nopadding-left ">
+                       <form id="title-form" role="form" method="POST" action="/ir/userstudy/final">
 
-                               a.	Are you familiar with the topic ?
+
+
+
+                        <div id="phone-section">
+                          <div class="col-sm-12 nopadding-left ">
+
+                               a.	Which of the systems do you find easiest to use ?
                                 <div class="form-group">
 
-                                    <label class="radio-inline"><input type="radio" name="familiar_topic" required value="yes">Yes</label>
-                                    <label class="radio-inline"><input type="radio" name="familiar_topic" value="no"> No</label>
+                                    <label class="radio-inline"><input type="radio" name="easiest" required value="1">First</label>
+                                    <label class="radio-inline"><input type="radio" name="easiest" value="2"> Second</label>
+                                    <label class="radio-inline"><input type="radio" name="easiest" value="3"> Third</label>
 
                                     </span>
 
@@ -83,14 +87,15 @@
 
                         </div>
 
-                        <div id="phone-section">
-                           <div class="col-sm-12 nopadding-left ">
+                               <div id="phone-section">
+                          <div class="col-sm-12 nopadding-left ">
 
-                               b.	Are you familiar with the legal context of the given topic ?
+                               b.	Which of the systems helps you most, to familiarize yourself with the searched topic ?
                                 <div class="form-group">
 
-                                    <label class="radio-inline"><input type="radio" name="familiar_context" required value="yes">Yes</label>
-                                    <label class="radio-inline"><input type="radio" name="familiar_context" value="no"> No</label>
+                                    <label class="radio-inline"><input type="radio" name="helps" required value="1">First</label>
+                                    <label class="radio-inline"><input type="radio" name="helps" value="2"> Second</label>
+                                    <label class="radio-inline"><input type="radio" name="helps" value="3"> Third</label>
 
                                     </span>
 
@@ -99,16 +104,45 @@
 
                         </div>
 
-                           <h2><a href="/ir/{{ session['secondSystemUsed'] }}/home" target="_blank">click here to open the search tool</a></h2>
+                               <div id="phone-section">
+                          <div class="col-sm-12 nopadding-left ">
 
-  <div class="clearfix"></div>
+                               c.	Which of the systems would you use again ?
+                                <div class="form-group">
+
+                                    <label class="radio-inline"><input type="radio" name="reuse" required value="1">First</label>
+                                    <label class="radio-inline"><input type="radio" name="reuse" value="2"> Second</label>
+                                    <label class="radio-inline"><input type="radio" name="reuse" value="3"> Third</label>
+
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                          <div id="phone-section">
+                          <div class="col-sm-12 nopadding-left ">
+
+                               d. do you have any suggestion(s) to improve the tool? kindly you use the textbox below
+                                <div class="form-group">
+
+                                   <textarea rows="5" cols="80" name="suggestion"></textarea>
+
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                          <div class="clearfix"></div>
 
                              <div id="preview-add">
-                                <button type="submit" >Save and Continue</button>
+                                <button type="submit" >Submit</button>
                             </div>
-                    </form>
-                             <div class="clearfix"></div>
+                          </form>
 
+                        <!-- end listings-->
 
                 </div>
             </div>

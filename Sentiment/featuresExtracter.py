@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
 import nltk
-nltk.downloader.download('vader_lexicon')
-nltk.download('punkt')
+# nltk.downloader.download('vader_lexicon')
+# nltk.download('punkt')
 import string
 import os
 from collections import Counter
