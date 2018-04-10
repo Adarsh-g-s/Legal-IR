@@ -56,11 +56,11 @@ class SearchTwo:
         print(rank)
         print("Relevance Score: ",found.score)
         #Store the first score and use it for normalization
-        if(rank == 1):
-            highestScore = found.score
-
-        normalizedScore = found.score/highestScore
-        print("Normalized Relevance Score: ",normalizedScore)
+#         if(rank == 1):
+#             highestScore = found.score
+# 
+#         normalizedScore = found.score/highestScore
+#         print("Normalized Relevance Score: ",normalizedScore)   
         #Title could be longer than a line, split and display
         title = found['title']
         title = title.split(';',maxsplit=2)
@@ -107,7 +107,7 @@ class SearchTwo:
 
             # Get all the search result with limit = None
             immediateResult = searcher.search(query, limit = None)
-            immediateResult.fragmenter.surround = 500
+            immediateResult.fragmenter.surround = 50
             # print(immediateResult)
 
 
