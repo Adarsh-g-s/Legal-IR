@@ -333,4 +333,4 @@ def showuserstudyfinal():
 if __name__ == '__main__':
     # app.run(host='192.168.137.1')
     # app.run(debug=True)
-     app.run(threaded=True)
+     app.run()

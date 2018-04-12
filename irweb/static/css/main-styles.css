@@ -273,7 +273,7 @@ option
 	border-top-right-radius:0px;
 	border-bottom-right-radius:0px;
 	border-right:1px solid #c2c2c2;
-	color:#c2c2c2;
+	color:#000000;
 	background:#ffffff url(../images/caret.png) top 50% right 15px no-repeat;
 	padding-left:25px;
 }
@@ -283,7 +283,7 @@ option
 	border-top-left-radius:0px;
 	border-bottom-left-radius:0px;
 	padding-left:25px;
-	color:#c2c2c2;
+		color:#000000;
 }
 #search-button
 {

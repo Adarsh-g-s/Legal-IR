@@ -12,6 +12,7 @@ and set the directory as specified in the irweb.py to point to that directory.
 
 Note: 1. Please install dependencies(vader,numpy,nltk etc) for your IDE.
       2. Sort your import dependencies as per your respective IDE. e.x. below
+      3. Create a folder named "rawfiles" and copy all the raw documents inside so they can be opened during the search
 
 PyDev: Folder structure of the project
  
