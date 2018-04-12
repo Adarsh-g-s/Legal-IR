@@ -2,6 +2,7 @@ from flask import Flask, flash, session, render_template, jsonify, request, redi
 import sqlite3
 import string
 from random import *
+import time
 
 from systemone import *
 from systemtwo import *
@@ -13,10 +14,9 @@ conn = sqlite3.connect(".\mydatabase.db")
 # conn = sqlite3.connect("mydatabase.db")
 cursor = conn.cursor()
 
-
-@app.route('/legalfiles/<path:path>')
+@app.route('/files/<path:path>')
 def send_js(path):
-    return send_from_directory('legalfiles', path)
+    return send_from_directory('../rawfiles', path)
 
 @app.route('/', methods=['GET'])
 @app.route('/ir/mercury/home', methods=['GET'])
@@ -52,7 +52,7 @@ def systemhome():
         result = {
             'relevantScore': found.score,
             'title': title, #just pick the first element
-            'path': found['path'].split("Legalfiles")[1],
+            'path': "/"+ntpath.basename(ntpath.dirname(found['path'])) +"/"+ ntpath.basename(found['path']), #found['path'].split("Legalfiles")[1],
             'summary': summary
         }
 
@@ -65,6 +65,8 @@ def systemhome():
         'recordsTotal': len(response),
         'recordsFiltered': len(response)
     }
+
+    time.sleep(30)
 
     return jsonify(finalout)
 
@@ -331,4 +333,4 @@ def showuserstudyfinal():
 if __name__ == '__main__':
     # app.run(host='192.168.137.1')
     # app.run(debug=True)
-     app.run()
+     app.run(threaded=True)

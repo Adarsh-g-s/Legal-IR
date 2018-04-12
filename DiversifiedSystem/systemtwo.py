@@ -4,7 +4,7 @@ Created on Feb 27, 2018
 '''
 from __future__ import division
 
-import pathlib
+import ntpath
 from bs4 import BeautifulSoup
 import os
 from glob2 import glob, iglob
@@ -151,8 +151,7 @@ class SearchTwo:
                 result = {
                     'relevantScore': found.score,
                     'title': title, #just pick the first element
-                    'path': found['path'].split("Legalfiles")[1],
-
+                    'path': "/" + ntpath.basename(ntpath.dirname(found['path'])) + "/" + ntpath.basename(found['path']),
                     'summary': summary
                 }
 
