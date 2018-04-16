@@ -65,8 +65,8 @@ def systemhome():
         'recordsTotal': len(response),
         'recordsFiltered': len(response)
     }
-
-    time.sleep(30)
+    if draw == 1:
+        time.sleep(30)
 
     return jsonify(finalout)
 
@@ -148,7 +148,18 @@ def showuserstudy():
         session_id = session['session_id']
 
         biodata = [(session_id,occupation, age, sex, course, semester)]
-        cursor.executemany("INSERT INTO biodata VALUES (?,?,?,?,?,?)", biodata)
+
+        # check if an entry exist for the session
+        cursor.execute("select * from biodata where sessionid = ?",(session_id,))
+        result_set = cursor.fetchone()
+
+        if result_set == None :
+
+            cursor.executemany("INSERT INTO biodata VALUES (?,?,?,?,?,?)", biodata)
+
+        else:
+            cursor.execute('update biodata set occupation = ?, age = ?, sex = ?, course = ?, semester = ? where sessionid = ?',[occupation,age,sex,course, semester,session_id])
+
         conn.commit()
 
         return redirect(url_for('showuserstudyone'))
@@ -168,9 +179,21 @@ def showuserstudyone():
         frequently = request.form.get('frequently')
         toolstr = ' '.join(str(e) for e in tool)
 
-
         skills = [(session_id, language, proficiency,frequently, toolstr, frequently_legal)]
-        cursor.executemany("INSERT INTO skills VALUES (?,?,?,?,?,?)", skills)
+
+        # check if an entry exist for the session
+        cursor.execute("select * from skills where sessionid = ?", (session_id,))
+        result_set = cursor.fetchone()
+
+        if result_set == None:
+
+            cursor.executemany("INSERT INTO skills VALUES (?,?,?,?,?,?)", skills)
+
+        else:
+            cursor.execute(
+                'update skills set language = ?, proficiency = ?, frequently = ?, tool = ?, frequently_legal = ? where sessionid = ?',
+                [language, proficiency, frequently, toolstr, frequently_legal, session_id])
+
         conn.commit()
 
         return redirect(url_for('showuserstudytwo'))
@@ -191,7 +214,20 @@ def showuserstudythree():
 
 
         task_one = [(session_id, familiar_topic,familiar_context,'','','','','','','','','',)]
-        cursor.executemany("INSERT INTO taskone VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", task_one)
+
+        # check if an entry exist for the session
+        cursor.execute("select * from taskone where sessionid = ?", (session_id,))
+        result_set = cursor.fetchone()
+
+        if result_set == None:
+
+            cursor.executemany("INSERT INTO taskone VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", task_one)
+
+        else:
+            cursor.execute(
+                'update taskone set familiar_topic = ?, familiar_context = ? where sessionid = ?',
+                [familiar_topic, familiar_context, session_id])
+
         conn.commit()
 
         return redirect(url_for('showuserstudythreetwo'))
@@ -231,7 +267,21 @@ def showuserstudyfour():
         familiar_context = request.form.get('familiar_context')
 
         task_two = [(session_id, familiar_topic, familiar_context, '','','','','','','','','')]
-        cursor.executemany("INSERT INTO tasktwo VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", task_two)
+
+
+        # check if an entry exist for the session
+        cursor.execute("select * from tasktwo where sessionid = ?", (session_id,))
+        result_set = cursor.fetchone()
+
+        if result_set == None:
+
+            cursor.executemany("INSERT INTO tasktwo VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", task_two)
+
+        else:
+            cursor.execute(
+                'update tasktwo set familiar_topic = ?, familiar_context = ? where sessionid = ?',
+                [familiar_topic, familiar_context, session_id])
+
         conn.commit()
 
         return redirect(url_for('showuserstudyfourtwo'))
@@ -273,7 +323,20 @@ def showuserstudyfive():
 
         task_three = [(session_id, familiar_topic, familiar_context, '', '', '',
                        '', '', '', '', '','')]
-        cursor.executemany("INSERT INTO taskthree VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", task_three)
+
+        # check if an entry exist for the session
+        cursor.execute("select * from taskthree where sessionid = ?", (session_id,))
+        result_set = cursor.fetchone()
+
+        if result_set == None:
+
+            cursor.executemany("INSERT INTO taskthree VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", task_three)
+
+        else:
+            cursor.execute(
+                'update taskthree set familiar_topic = ?, familiar_context = ? where sessionid = ?',
+                [familiar_topic, familiar_context, session_id])
+
         conn.commit()
 
         return redirect(url_for('showuserstudyfivetwo'))
@@ -316,9 +379,21 @@ def showuserstudyfinal():
 
 
         task_final = [(session_id, easiest, helps, reuse, suggestion)]
-        cursor.executemany("INSERT INTO final VALUES (?,?,?,?,?)", task_final)
-        conn.commit()
 
+        # check if an entry exist for the session
+        cursor.execute("select * from final where sessionid = ?", (session_id,))
+        result_set = cursor.fetchone()
+
+        if result_set == None:
+
+            cursor.executemany("INSERT INTO final VALUES (?,?,?,?,?)", task_final)
+
+        else:
+            cursor.execute(
+                'update final set easiest = ?, helps = ?, reuse = ?, suggestion = ? where sessionid = ?',
+                [easiest, helps,reuse, suggestion, session_id])
+
+        conn.commit()
         session.pop('session_id', None)
         session.pop('userTracker', None)
 
