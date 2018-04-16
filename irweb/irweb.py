@@ -406,6 +406,6 @@ def showuserstudyfinal():
     return render_template('userstudyfinal.html')
 
 if __name__ == '__main__':
-    # app.run(host='192.168.137.1')
+    app.run(host='192.168.137.1')
     # app.run(debug=True)
-     app.run()
+    #  app.run()
