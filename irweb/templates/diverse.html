@@ -177,14 +177,18 @@
 	var keycode = (event.keyCode ? event.keyCode : event.which);
 	if(keycode == '13'){
 		       oTable = $('#dataTableId').dataTable({
-                serverSide: true,
+                   serverSide: false,
                 destroy: true,
                 filter: true,
+                iDisplayLength: 10,
                 paginate: true,
                 processing: true,
+                info: true,
                 bSort:false,
                 order:[],
-                info: true,
+                language:{
+                    loadingRecords: ""
+                },
                 ajax: {
                     url: "/ir/venus/query",
                     type: 'GET',
