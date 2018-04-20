@@ -1,4 +1,5 @@
 from flask import Flask, flash, session, render_template, jsonify, request, redirect, url_for,send_from_directory
+# from flask.ext.session import Session
 import sqlite3
 import string
 from random import *
@@ -8,10 +9,12 @@ from systemone import *
 from systemtwo import *
 
 app = Flask(__name__, static_url_path='')
+# Session_Type = 'filesystem'
+# SESSION_PERMANENT = False
 app.secret_key = 'dslfdsls3993jdshfsd'
 # conn = sqlite3.connect("C:\Users\Oyewale\Desktop\IR Project\Legal-IR\irweb\data\mydatabase.db")
-conn = sqlite3.connect(".\mydatabase.db")
-# conn = sqlite3.connect("mydatabase.db")
+# conn = sqlite3.connect(".\mydatabase.db")
+conn = sqlite3.connect(".\mydatabase.db",check_same_thread=False)
 cursor = conn.cursor()
 
 @app.route('/files/<path:path>')
@@ -76,6 +79,23 @@ def systemhome():
 def showsystemtwohome():
     return render_template('diverse.html')
 
+
+# @app.route('/ir/venus/home', methods=['POST'])
+# def showsystemtwoformhome():
+#
+#     query = request.form['query']
+#     search = SearchTwo()
+#     response = search.passingQuery(query)
+#
+#     # finalout = {
+#     #     'data': response,
+#     #     'draw': draw,
+#     #     'recordsTotal': len(response),
+#     #     'recordsFiltered': len(response)
+#     # }
+#     # return query
+#     return render_template('diverse.html',results=response)
+
 @app.route('/ir/venus/query', methods=['GET'])
 def systemtwohome():
     start = request.args.get('start', default=1, type=int)
@@ -86,6 +106,16 @@ def systemtwohome():
 
     search = SearchTwo()
     response = search.passingQuery(query)
+
+
+    # if draw == 1:
+    #     response = search.passingQuery(query)
+    #     session['response'] = response
+    #
+    # if draw > 1:
+    #     response = session['response']
+    #
+    # results = response[start:length]
 
     finalout = {
         'data': response,
@@ -406,7 +436,7 @@ def showuserstudyfinal():
     return render_template('userstudyfinal.html')
 
 if __name__ == '__main__':
-    # app.run(host='192.168.137.1')
+    app.run("0.0.0.0", threaded=True)
     # app.run(debug=True)
-     app.run()
+    #  app.run()
     # app.run(threaded=True)

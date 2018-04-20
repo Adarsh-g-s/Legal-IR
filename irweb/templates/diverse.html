@@ -51,10 +51,9 @@
         <div class="row">
             <div class="col-sm-12">
 
-                <!--<form class="review-form" method="post" action="">-->
-
                 <div class="col-sm-9 col-md-10 nopadding">
                     <div id="search-input">
+
 
                         <div class="col-sm-12 nopadding">
                             <input type="text" name="query" id="query" class="form-control" placeholder="Search Query">
@@ -69,7 +68,8 @@
                         <button type="submit" id="search"><i class="fa fa-search"></i>Search</button>
                     </div>
                 </div>
-                <!--{#                </form>#}-->
+
+
             </div>
         </div>
     </div>
@@ -102,9 +102,8 @@
             </tr>
             </thead>
 
-
-            <div class="row">
-                <div class="col-sm-12 text-center">
+                <div class="row">
+                <div class="col-sm-6 text-center">
 
                     <div id="feature-box">
                         <tbody>
@@ -117,6 +116,42 @@
 
                 </div>
             </div>
+
+  <!--<tbody>-->
+   <!--{% for result in results %}-->
+                         <!--<tr>-->
+
+            <!--<div class="row">-->
+                <!--<div class="col-sm-12 text-center">-->
+
+                    <!--<div id="feature-box">-->
+
+
+                          <!--<div class="col-sm-8 col-md-8">-->
+                              <!--<div class="feature-boxes-container">-->
+                                  <!--<div class="feature-box-text">-->
+                                      <!--<a href="/files{{result['path']}}"  target="_blank">-->
+                                      <!--<h3>{{result["title"]}}</h3></a>-->
+                                      <!--<p>-->
+                                       <!--{{result["summary"]}}</p>-->
+                                  <!--</div>-->
+                              <!--</div>-->
+                          <!--</div>-->
+                          <!--<div class="clearfix"></div>-->
+
+
+
+
+                    <!--</div>-->
+
+                    <!--<div class="clearfix"></div>-->
+
+
+                <!--</div>-->
+            <!--</div>-->
+                                 <!--</tr>-->
+ <!--{% endfor %}-->
+   <!--</tbody>-->
         </table>
     </div>
 </div>
@@ -130,7 +165,21 @@
 <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename='js/table/jquery.dataTables.min.js') }}"></script>
 
+<!--<script type="text/javascript">-->
 
+            <!--$('#dataTableId').dataTable({-->
+                <!--destroy: true,-->
+                <!--filter: true,-->
+                <!--iDisplayLength: 10,-->
+                <!--paginate: true,-->
+                <!--processing: true,-->
+                <!--info: true,-->
+                <!--bSort:true,-->
+                <!--order:[],-->
+
+            <!--});-->
+
+<!--</script>-->
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -141,7 +190,7 @@
                 filter: true,
                 iDisplayLength: 10,
                 paginate: true,
-                processing: true,
+                processing: false,
                 info: true,
                 bSort:false,
                 order:[],
@@ -182,7 +231,7 @@
                 filter: true,
                 iDisplayLength: 10,
                 paginate: true,
-                processing: true,
+                processing: false,
                 info: true,
                 bSort:false,
                 order:[],
@@ -213,7 +262,7 @@
 	}
 
 });
-</script>
+// </script>
 
 </body>
 </html>

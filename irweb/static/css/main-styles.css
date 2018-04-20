@@ -2747,3 +2747,10 @@ input[type=radio]:checked
 	margin-bottom: 0px;
 	line-height: 1.6em;
 }
+
+
+/* Custom hack Styling*/
+
+.top-buffer {
+	margin-bottom:40px;
+}

@@ -15057,6 +15057,10 @@ position:relative
     overflow:hidden;
     zoom:1
 }
+
+.group-spacing {
+    padding-top: 10px;
+}
 .group {
     zoom:1
 }
