@@ -40,7 +40,7 @@ class Baseline:
         return fileContents
 
 # Importing the dataset for training
-dataset1 = pd.read_csv('naivetrain.csv' ,  encoding='cp437')
+dataset1 = pd.read_csv('NaiveBayes.csv' ,  encoding='cp437')
 #iloc is integer location based indexing for selection by position -> Data Frame
 filePaths=dataset1.iloc[:,0].values
 
