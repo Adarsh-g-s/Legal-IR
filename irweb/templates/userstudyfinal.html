@@ -24,10 +24,13 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 
     <style type="text/css">
-        {#.dataTables_filter,.dataTables_info,.dataTables_length { display: none; }#}
+        .dataTables_filter,.dataTables_info,.dataTables_length { display: none; }
         .dataTables_filter, .dataTables_length, .dataTables_wrapper thead {
             display: none;
         }
+        .error {
+  color: red;
+}
     </style>
 </head>
 
@@ -73,9 +76,9 @@
                                a.	Which of the systems do you find easiest to use ?
                                 <div class="form-group">
 
-                                    <label class="radio-inline"><input type="radio" name="easiest" required value="1">First</label>
-                                    <label class="radio-inline"><input type="radio" name="easiest" value="2"> Second</label>
-                                    <label class="radio-inline"><input type="radio" name="easiest" value="3"> Third</label>
+                                    <label class="radio-inline"><input type="checkbox" name="easiest"  value="1">First</label>
+                                    <label class="radio-inline"><input type="checkbox" name="easiest" value="2"> Second</label>
+                                    <label class="radio-inline"><input type="checkbox" name="easiest" value="3"> Third</label>
 
                                     </span>
 
@@ -88,9 +91,9 @@
                                b.	Which of the systems helps you most, to familiarize yourself with the searched topic ?
                                 <div class="form-group">
 
-                                    <label class="radio-inline"><input type="radio" name="helps" required value="1">First</label>
-                                    <label class="radio-inline"><input type="radio" name="helps" value="2"> Second</label>
-                                    <label class="radio-inline"><input type="radio" name="helps" value="3"> Third</label>
+                                    <label class="radio-inline"><input type="checkbox" name="helps"  value="1">First</label>
+                                    <label class="radio-inline"><input type="checkbox" name="helps" value="2"> Second</label>
+                                    <label class="radio-inline"><input type="checkbox" name="helps" value="3"> Third</label>
 
                                     </span>
 
@@ -103,9 +106,9 @@
                                c.	Which of the systems would you use again ?
                                 <div class="form-group">
 
-                                    <label class="radio-inline"><input type="radio" name="reuse" required value="1">First</label>
-                                    <label class="radio-inline"><input type="radio" name="reuse" value="2"> Second</label>
-                                    <label class="radio-inline"><input type="radio" name="reuse" value="3"> Third</label>
+                                    <label class="radio-inline"><input type="checkbox" name="reuse"  value="1">First</label>
+                                    <label class="radio-inline"><input type="checkbox" name="reuse" value="2"> Second</label>
+                                    <label class="radio-inline"><input type="checkbox" name="reuse" value="3"> Third</label>
 
                                     </span>
 
@@ -149,6 +152,27 @@
 <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename='js/table/jquery.dataTables.min.js') }}"></script>
 
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
+
+<script type="text/javascript">
+
+    $( "#title-form" ).validate({
+
+         rules : {
+                 'easiest': { required: true, minlength: 1 },
+                 'helps': { required: true, minlength: 1 },
+                 'reuse': { required: true, minlength: 1 }
+          },
+        errorPlacement: function(error, element) {
+            error.appendTo(element.closest('div'));
+		}
+
+
+
+});
+    $.validator.messages.required = 'Please select one of the options!   ';
+</script>
 </body>
 </html>

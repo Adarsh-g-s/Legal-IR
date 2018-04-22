@@ -23,11 +23,15 @@
     <!-- Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 
+
     <style type="text/css">
-        {.dataTables_filter,.dataTables_info,.dataTables_length { display: none; }}
+        .dataTables_filter,.dataTables_info,.dataTables_length { display: none; }
         .dataTables_filter, .dataTables_length, .dataTables_wrapper thead {
             display: none;
         }
+        .error {
+  color: red;
+}
     </style>
 </head>
 
@@ -165,15 +169,17 @@
 
                                g. How would you rate the ease of use of the system after this query ?
                                 <div class="form-group">
-
+                                 Very Easy
                                     <label class="radio-inline"><input type="radio" name="system_rate" required value="1">1</label>
                                     <label class="radio-inline"><input type="radio" name="system_rate" value="2"> 2</label>
                                    <label class="radio-inline"><input type="radio" name="system_rate" value="3">3</label>
                                     <label class="radio-inline"><input type="radio" name="system_rate" value="4"> 4</label>
                                   <label class="radio-inline"><input type="radio" name="system_rate" value="5"> 5</label>
-                                    </span>
 
-                            </div>
+Difficult
+                                </span>
+
+                                </div>
 
                          </div>
                          <div class="mt-5 col-sm-12 nopadding-left ">
@@ -212,6 +218,19 @@
 <script type="text/javascript" src="{{ url_for('static',filename='js/jquery-1.11.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename='js/table/jquery.dataTables.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+<script type="text/javascript">
+
+    $( "#title-form" ).validate({
+        errorPlacement: function(error, element) {
+            error.appendTo(element.closest('div'));
+		}
+
+});
+    $.validator.messages.required = 'Please select one of the options!   ';
+</script>
 
 
 </body>

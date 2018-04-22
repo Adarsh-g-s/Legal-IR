@@ -16,18 +16,21 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main-styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/loader.css') }}">
-
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/general.css') }}">
 
 
     <!-- Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 
+
     <style type="text/css">
-        {#.dataTables_filter,.dataTables_info,.dataTables_length { display: none; }#}
+        .dataTables_filter,.dataTables_info,.dataTables_length { display: none; }
         .dataTables_filter, .dataTables_length, .dataTables_wrapper thead {
             display: none;
         }
+        .error {
+  color: red;
+}
     </style>
 </head>
 
@@ -68,6 +71,7 @@
                             <div class="mt-5 col-sm-12 nopadding-left ">
 
                               1.  What is your native language?
+
                                 <div class="form-group">
 
                                     <label class="radio-inline"><input type="radio" name="language" required value="Deutsch">Deutsch</label>
@@ -83,6 +87,7 @@
                                 <div class="mt-5 col-sm-12 nopadding-left">
 
                                2.	How would you rate your proficiency in reading and understanding English?
+
                                 <div class="form-group">
                                    Basic Skills
                                     <label class="radio-inline"><input type="radio" name="proficiency" required value="1">1</label>
@@ -103,6 +108,7 @@
                             <div class="mt-5 col-sm-12 nopadding-left ">
 
                                3.	How frequently do you use web search engines (e.g. Google, Bing)?
+
                                 <div class="form-group">
 
                                     <label class="radio-inline"><input type="radio" name="frequently"  required value="never">Never</label>
@@ -140,10 +146,10 @@
                             5.	When researching legal cases, what existing tools and websites do you use?
                                 <div class="form-group">
 
-                                    <label class="radio-inline"><input type="checkbox" name="tool" value="eurolex">EuroLex</label>
-                                    <label class="radio-inline"><input type="checkbox" name="tool" value="usca">USCA</label>
-                                    <label class="radio-inline"><input type="checkbox" name="tool" value="google">Google Legal</label>
-                                    <label class="radio-inline"><input type="checkbox" name="tool" value="others">Others</label>
+                                    <label class="radio-inline"><input type="checkbox" class="tool-group" name="tool" value="eurolex">EuroLex</label>
+                                    <label class="radio-inline"><input type="checkbox" class="tool-group" name="tool" value="usca">USCA</label>
+                                    <label class="radio-inline"><input type="checkbox" class="tool-group" name="tool" value="google">Google Legal</label>
+                                    <label class="radio-inline"><input type="checkbox" class="tool-group" name="tool" value="others">Others</label>
 
                                     </span>
 
@@ -170,7 +176,25 @@
 <script type="text/javascript" src="{{ url_for('static',filename='js/jquery-1.11.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename='js/table/jquery.dataTables.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
 
+<script type="text/javascript">
+
+    $( "#title-form" ).validate({
+
+         rules : {
+                'tool': { required: true, minlength: 1 }
+          },
+        errorPlacement: function(error, element) {
+            error.appendTo(element.closest('div'));
+		}
+
+
+
+});
+    $.validator.messages.required = 'Please select one of the options!   ';
+</script>
 </body>
 </html>

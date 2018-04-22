@@ -159,9 +159,9 @@ def showuserstudy():
         order = [];
 
         if orderChoice == 0 :
-            order = ['mercury','venus','pluto']
+            order = ['mercury','venus','mercury']
         if orderChoice == 1:
-            order = ['mercury','pluto','pluto']
+            order = ['mercury','venus','pluto']
         if orderChoice == 2:
             order = ['pluto','mercury','mercury']
         if orderChoice == 3:
@@ -173,8 +173,8 @@ def showuserstudy():
 
 
         allchar = string.ascii_lowercase + string.digits
-        user_id = "".join(choice(allchar) for x in range(randint(5, 8)))
-        session['session_id'] = user_id;
+        user_session_id = "".join(choice(allchar) for x in range(randint(5, 8)))
+        session['session_id'] = user_session_id;
         session_id = session['session_id']
 
         biodata = [(session_id,occupation, age, sex, course, semester)]
@@ -228,11 +228,15 @@ def showuserstudyone():
 
         return redirect(url_for('showuserstudytwo'))
 
+    if session.get('session_id') == False:
+        return redirect(url_for('showuserstudyone'))
+
     return render_template('userstudyfirst.html')
 
 @app.route('/ir/userstudy/2')
 def showuserstudytwo():
-
+    if session.get('session_id') is None:
+        return redirect(url_for('showuserstudy'))
     return render_template('userstudysecond.html')
 
 @app.route('/ir/userstudy/3', methods=['POST', 'GET'])
@@ -261,7 +265,8 @@ def showuserstudythree():
         conn.commit()
 
         return redirect(url_for('showuserstudythreetwo'))
-
+    if session.get('session_id') is None:
+        return redirect(url_for('showuserstudy'))
 
     return render_template('userstudythird.html')
 
@@ -281,12 +286,14 @@ def showuserstudythreetwo():
 
         task_one = [(familiar_now,relevant,overview,
                      support,similar,reuse,system_rate,sufficient,system_used,session_id)]
+
         cursor.executemany("update taskone set familiar_now = ?, relevant = ?, overview = ?, support = ?, similar = ?, reuse = ?, system_rate = ?, sufficient = ?,system_used = ? where sessionid = ?", task_one)
         conn.commit()
 
         return redirect(url_for('showuserstudyfour'))
 
-
+    if session.get('session_id') is None:
+        return redirect(url_for('showuserstudy'))
     return render_template('userstudythirdtwo.html')
 
 @app.route('/ir/userstudy/4', methods=['POST', 'GET'])
@@ -315,7 +322,8 @@ def showuserstudyfour():
         conn.commit()
 
         return redirect(url_for('showuserstudyfourtwo'))
-
+    if session.get('session_id') is None:
+        return redirect(url_for('showuserstudy'))
     return render_template('userstudyfourth.html')
 
 
@@ -333,15 +341,16 @@ def showuserstudyfourtwo():
         sufficient = request.form.get('sufficient')
         system_used = request.form.get('system_used')
 
-        task_two = [(session_id, familiar_now, relevant, overview, support, similar,
-                     reuse, system_rate, sufficient,system_used)]
-        cursor.executemany("update tasktwo set familiar_now = ?, relevant = ?, overview = ?, support = ?, similar = ?, reuse = ?, system_rate = ?, sufficient = ?,system_used = ? where sessionid = ?",
+        task_two = [( familiar_now, relevant, overview, support, similar,
+                     reuse, system_rate, sufficient,system_used,session_id)]
+        cursor.executemany("update tasktwo set familiar_now = ?, relevant = ?, overview = ?, support = ?, similar = ?, reuse = ?, system_rate = ?, sufficient = ?, system_used = ? where sessionid = ?",
             task_two)
 
         conn.commit()
 
         return redirect(url_for('showuserstudyfive'))
-
+    if session.get('session_id') is None:
+        return redirect(url_for('showuserstudy'))
     return render_template('userstudyfourthtwo.html')
 
 @app.route('/ir/userstudy/5', methods=['POST', 'GET'])
@@ -370,7 +379,8 @@ def showuserstudyfive():
         conn.commit()
 
         return redirect(url_for('showuserstudyfivetwo'))
-
+    if session.get('session_id') is None:
+        return redirect(url_for('showuserstudy'))
     return render_template('userstudyfifth.html')
 
 @app.route('/ir/userstudy/52', methods=['POST', 'GET'])
@@ -387,25 +397,32 @@ def showuserstudyfivetwo():
         sufficient = request.form.get('sufficient')
         system_used = request.form.get('system_used')
 
-        task_three = [(session_id, familiar_now, relevant, overview, support, similar,
-                     reuse, system_rate, sufficient,system_used)]
+        task_three = [(familiar_now, relevant, overview, support, similar,
+                     reuse, system_rate, sufficient,system_used,session_id)]
         cursor.executemany(
             "update taskthree set familiar_now = ?, relevant = ?, overview = ?, support = ?, similar = ?, reuse = ?, system_rate = ?, sufficient = ?,system_used = ? where sessionid = ?",
             task_three)
         conn.commit()
 
         return redirect(url_for('showuserstudyfinal'))
-
+    if session.get('session_id') is None:
+        return redirect(url_for('showuserstudy'))
     return render_template('userstudyfifthtwo.html')
 
 @app.route('/ir/userstudy/final', methods=['POST', 'GET'])
 def showuserstudyfinal():
     if request.method == 'POST':
         session_id = session['session_id']
-        easiest = request.form.get('easiest')
-        helps = request.form.get('helps')
         suggestion = request.form.get('suggestion')
-        reuse = request.form.get('reuse')
+
+        chk_easiest = request.form.getlist('easiest')
+        easiest = ' '.join(str(e) for e in chk_easiest)
+
+        chk_helps = request.form.getlist('helps')
+        helps = ' '.join(str(e) for e in chk_helps)
+
+        chk_resuse = request.form.getlist('reuse')
+        reuse = ' '.join(str(e) for e in chk_resuse)
 
 
         task_final = [(session_id, easiest, helps, reuse, suggestion)]
@@ -431,6 +448,9 @@ def showuserstudyfinal():
 
         flash('You are done with the tasks, thanks for your time')
 
+        return redirect(url_for('showuserstudy'))
+
+    if session.get('session_id') is None:
         return redirect(url_for('showuserstudy'))
 
     return render_template('userstudyfinal.html')
