@@ -13,7 +13,7 @@ from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.preprocessing import LabelEncoder
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score,precision_score,recall_score,f1_score
 
@@ -38,15 +38,15 @@ class Baseline:
         fRead = open(filePath,'r',encoding="utf8")
         fileContents = fRead.read()
         return fileContents
-    
-# Importing the dataset
-dataset1 = pd.read_csv('NaiveBayes.csv' ,  encoding='cp437')
+
+# Importing the dataset for training
+dataset1 = pd.read_csv('naivetrain.csv' ,  encoding='cp437')
 #iloc is integer location based indexing for selection by position -> Data Frame
 filePaths=dataset1.iloc[:,0].values
 
 baseline = Baseline(vocabulary = [],corpus= []) 
 #An array of file path is returned. Extract this file path one by one
-for i in range(0,118):
+for i in range(0,101):
     filePath = filePaths[i]
     #Visit the path and extract contents
     baseline.vocabulary = baseline.visitPath(filePath)
@@ -74,15 +74,14 @@ print(label)
 labelEncoder=LabelEncoder()
 y=labelEncoder.fit_transform(label)   
  
-#print(y)
-      
     # Splitting the dataset into the Training set and Test set, 80%-20% for cross validation
-X_train, X_test, y_train, y_test = train_test_split(x, y, test_size = 0.10)
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size = 23,shuffle = False)
           
     
 classifier=GaussianNB()
 #Classifier learning 
 classifier.fit(X_train,y_train)
+
 #Classifier prediction
 predictedLabel=classifier.predict(X_test)
 print(predictedLabel)
