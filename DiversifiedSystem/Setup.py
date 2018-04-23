@@ -1,8 +1,3 @@
-'''
-Created on Feb 27, 2018
-
-@author: adarsh
-'''
 from __future__ import division
 from bs4 import BeautifulSoup
 import os

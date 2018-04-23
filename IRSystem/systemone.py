@@ -1,8 +1,3 @@
-'''
-Created on Dec 14, 2017
-
-@author: adarsh
-'''
 from bs4 import BeautifulSoup
 import os
 from lxml import html
