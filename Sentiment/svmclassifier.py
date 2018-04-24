@@ -12,7 +12,7 @@ from sklearn.metrics import recall_score
 from sklearn.externals import joblib
 
 
-load=pd.read_csv('..\\DATA\\training_data_balanced.csv',delimiter=',',skipinitialspace=True)
+load=pd.read_csv('..\\DATA\\trainingdata_final.csv',delimiter=',',skipinitialspace=True)
 
 feature_cols_train=['negative_word_count','positive_word_count','vander_score']#happiness_score excluded
 
@@ -21,7 +21,7 @@ y=load.Sentiment
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=2)
 
-clf = svm.SVC(kernel='linear', C=20,random_state=2)
+clf = svm.SVC(kernel='rbf', C=1.7,gamma=2,random_state=2)
 #clf2 = svm.SVC(kernel='linear', C=20,random_state=2).fit(X_train,y_train)
 
 #print(clf2.score(X_test, y_test))
