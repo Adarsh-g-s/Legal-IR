@@ -97,7 +97,7 @@ class sentiment_method1:
                 df.loc[name] = sent_feat1
 
 
-                pred1 = clf.predict(df[feature_cols_train])
+                pred1 = clf.predict(df[feature_cols_train].as_matrix())
                 #print(pred1)
                 pred_list.append(pred1[0])
 
@@ -106,7 +106,7 @@ class sentiment_method1:
                 df.loc[name] = sent_feat2
 
 
-                pred2 = clf.predict(df[feature_cols_train])
+                pred2 = clf.predict(df[feature_cols_train].as_matrix())
                 #print(pred2)
                 pred_list.append(pred2[0])
 
@@ -115,7 +115,7 @@ class sentiment_method1:
                 df.loc[name] = sent_feat3
 
 
-                pred3 = clf.predict(df[feature_cols_train])
+                pred3 = clf.predict(df[feature_cols_train].as_matrix())
                 #print(pred3)
                 pred_list.append(pred3[0])
 

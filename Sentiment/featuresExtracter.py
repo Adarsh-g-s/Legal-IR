@@ -100,7 +100,8 @@ class feat_analyser:
 
         #Vander score
         vander_sent = sid.polarity_scores(data_review)
-        feat_list.append( vander_sent['compound'])
+        vader_compound_score_norm = ((vander_sent['compound']+1)/2)
+        feat_list.append( vader_compound_score_norm)
 
 
         #Happiness Score
