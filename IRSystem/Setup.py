@@ -212,7 +212,9 @@ while (True):
         query = queryParser.parse(query)
         print(query)
         
-#         rankingModel = scoring.BM25F(B=0.75,K1=1.5)
+        '''
+        BM25F is used without giving any weights to different fields of the document! 
+        '''
         with indexReader.searcher(weighting=scoring.BM25F(B=0.75,K1=1.2)) as searcher:
 #             results=searcher.search(query, terms = True)
             pageNumber = 0
