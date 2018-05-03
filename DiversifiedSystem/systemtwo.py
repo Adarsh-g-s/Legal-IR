@@ -45,7 +45,7 @@ class SearchTwo:
 
     def getTheQueryParser(self,indexer):
         'Return the query parser with corresponding schema'
-        return qparser.MultifieldParser(["title","contents"], schema=indexer.getSchema())
+        return qparser.MultifieldParser(["title","contents"], schema=indexer.getSchema(),group=qparser.OrGroup)
 
     def getResults(self,found,rank,highestScore):
         print()

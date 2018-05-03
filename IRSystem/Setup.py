@@ -50,7 +50,7 @@ class Search:
     
     def getTheQueryParser(self,indexer):
         'Return the query parser with corresponding schema'
-        return qparser.MultifieldParser(["title","contents"], schema=indexer.getSchema())
+        return qparser.MultifieldParser(["title","contents"], schema=indexer.getSchema(), group=qparser.OrGroup)
     
     def getResults(self,found,rank,highestScore):
         print()
@@ -207,6 +207,9 @@ while (True):
 #         print(setup.indexDirectory)
         indexReader = open_dir(setup.indexDirectory)
         search = Search()
+        '''
+        Change from AND to OR operator during query parsing.
+        '''
         queryParser = search.getTheQueryParser(indexer)
         query = input("Enter the query: ")
         query = queryParser.parse(query)
