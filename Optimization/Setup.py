@@ -23,6 +23,9 @@ import numpy
 import hyperopt
 from random import seed
 import matplotlib.pyplot as plt
+import ntpath
+import importlib
+importlib.import_module('mpl_toolkits.mplot3d').Axes3D
 
 class Indexer:
     '''
@@ -119,6 +122,7 @@ class Setup:
         self.space = space
         self.hitList = hitList
         self.docList = docList
+        self.recallList = []
     
     def userInput(self):
         print("\n Enter \n 1. Index \n 2. Search \n 3. Exit")
@@ -194,6 +198,19 @@ class Setup:
         diversifier.alpha = a
         diversifier.beta = b
         diverseResult, scoreList, setup.sumOfCurrToNext,setup.sumOfPrevToNext = diversifier.findMostDiverse(k)
+        # Start --- Recall graph ---
+        # For ploting the recall against alpha & beta for the query: slavery
+        slavRefDocList = ["96499.html", "87116.html", "1447641.html", "90897.html", "88493.html", "110461.html", "94602.html", "96244.html", "85748.html", "86060.html"]
+        relvantDocCounter = 0
+        nDocCount = 10
+        for nDocIndex in range(0, nDocCount):
+            fileName = ntpath.basename(diverseResult[nDocIndex])
+            if(fileName in slavRefDocList):
+                relvantDocCounter += 1
+
+        recall = relvantDocCounter/nDocCount
+        setup.recallList.append(recall)
+        # End --- Recall graph ---
         return -(a * setup.sumOfCurrToNext + b * setup.sumOfPrevToNext)
                     
 setup = Setup(documentPath = None, filePath = None, htmlFileContents= None, fileTitle = None, choice = None, indexDirectory=None, indexName = None,sumOfCurrToNext = None,sumOfPrevToNext = None,space = None,docList = None, hitList = None )
@@ -342,6 +359,23 @@ while (True):
             ax.set_title('$val$ $vs$ $b$ ', fontsize=18)
             ax.set_xlabel('$b$', fontsize=16)
             ax.set_ylabel('$val$', fontsize=16)
+            plt.show()
+
+            '''
+            Plot of recall for a & b
+            '''
+            fig = plt.figure()
+            ax = fig.gca(projection='3d')
+            xs = [t['misc']['vals']['a'] for t in trials.trials]
+            ys = [t['misc']['vals']['b'] for t in trials.trials]
+            zs = setup.recallList
+            ax.plot(xs, ys, zs, label='Recall curve')
+            ax.set_title('$Recall$ $vs$ $a$ $vs$ $b$', fontsize=18)
+            ax.set_xlabel('$a$', fontsize=16)
+            ax.set_ylabel('$b$', fontsize=16)
+            ax.set_zlabel('$recall$', fontsize=16)
+
+            ax.legend()
             plt.show()
             break          
     else:
