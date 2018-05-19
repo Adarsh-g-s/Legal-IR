@@ -16,7 +16,7 @@ from whoosh import qparser
 from whoosh import scoring
 from whoosh.scoring import Weighting
 from whoosh.highlight import highlight, WholeFragmenter
-from Diversifier import Diversifier
+from DiversifiedSystem.Diversifier import Diversifier
 from hyperopt import hp
 from hyperopt import fmin, Trials, tpe
 import numpy
@@ -200,7 +200,7 @@ class Setup:
         diverseResult, scoreList, setup.sumOfCurrToNext,setup.sumOfPrevToNext = diversifier.findMostDiverse(k)
         # Start --- Recall graph ---
         # For ploting the recall against alpha & beta for the query: slavery
-        slavRefDocList = ["96499.html", "87116.html", "1447641.html", "90897.html", "88493.html", "110461.html", "94602.html", "96244.html", "85748.html", "86060.html"]
+        slavRefDocList = ["567584.html", "2434297.html", "198968.html", "102225.html", "103996.html", "104091.html", "96784.html", "108507.html", "112193.html", "97876.html"]
         relvantDocCounter = 0
         nDocCount = 10
         for nDocIndex in range(0, nDocCount):
@@ -374,9 +374,33 @@ while (True):
             ax.set_xlabel('$a$', fontsize=16)
             ax.set_ylabel('$b$', fontsize=16)
             ax.set_zlabel('$recall$', fontsize=16)
-
             ax.legend()
             plt.show()
+            
+            '''
+            Plot of recall for f(K)
+            '''
+            f, ax = plt.subplots(1)
+            xs = [t['result']['loss'] for t in trials.trials]
+            ys = setup.recallList
+            ax.scatter(xs, ys, s=20, linewidth=0.01, alpha=0.75)
+            ax.set_title('$recall$ $vs$ $f(K)$ ', fontsize=18)
+            ax.set_xlabel('$f(K)$', fontsize=16)
+            ax.set_ylabel('$Diversified recall$', fontsize=16)
+            plt.show()
+            
+            print("\nAlpha values...\n")
+            print([t['misc']['vals']['a'] for t in trials.trials])
+            
+            print("\nBeta values...\n")
+            print([t['misc']['vals']['b'] for t in trials.trials])
+            
+            print("\n\Diversified recall values...\n")
+            print(setup.recallList)
+            
+            print("\n\f(K) values...\n")
+            print([t['result']['loss'] for t in trials.trials])
+            
             break          
     else:
         exit()
