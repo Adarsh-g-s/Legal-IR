@@ -30,4 +30,4 @@ Using Visual Studio:
 --------------------
 While using visual studio to create the prjects from the existing code, .pyproj files will be created for each. Be sure to add Sentiment project as a reference to the created project.
 
-P.S. Copy the html files to the "rawfiles" folder in the current working directory, to open the files in web.
+P.S. Copy the html files to the "rawfiles" folder in the current working directory(project directory), to open the files in web.
