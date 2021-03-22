@@ -1,4 +1,4 @@
-# Legal-IR
+# Legal-IR (Diversifying Search Results in Legal Information Retrieval System)
 Legal Information Retrieval with diversification model
 
 Uses a semantic and a sentiment diversification model for opinion diversification.
