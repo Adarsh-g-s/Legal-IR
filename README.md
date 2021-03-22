@@ -1,7 +1,19 @@
 # Legal-IR (Diversifying Search Results in Legal Information Retrieval System)
-Legal Information Retrieval with diversification model
+Legal Information Retrieval with diversification model - Uses a semantic and a sentiment diversification model for opinion diversification.
 
-Uses a semantic and a sentiment diversification model for opinion diversification.
+## Abstract
+We aim to represent the top-k search results which are diversified and relevant,
+by applying sentiment and semantic analysis for information retrieval system. Support
+Vector Machine (SVM) classifier is used to perform document-level sentiment
+classification, whose results are later leveraged to find sentiment distance between
+documents. The Semantic analysis includes computation of cosine distance between
+documents. We propose a diversification algorithm which maximizes the summation
+of sentiment and semantic distances for documents to obtain top k results which
+are diversified. We also propose a methodology for evaluation of diversified results
+by customizing standard measures like precision, recall and discounted cumulative
+gain. We performed a web-based user study to evaluate the built diversified system
+against standard information retrieval system, results obtained from user study are
+promising.
 
 Python version:3.6
 
