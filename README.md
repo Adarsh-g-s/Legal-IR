@@ -15,6 +15,8 @@ gain. We performed a web-based user study to evaluate the built diversified syst
 against standard information retrieval system, results obtained from user study are
 promising.
 
+![image](https://user-images.githubusercontent.com/26891940/112000107-f2473f00-8b1d-11eb-94e6-dfc1c48772f3.png)
+
 Python version:3.6
 
 # To run the user study
