@@ -16,6 +16,9 @@ against standard information retrieval system, results obtained from user study 
 promising.
 
 ![image](https://user-images.githubusercontent.com/26891940/112000107-f2473f00-8b1d-11eb-94e6-dfc1c48772f3.png)
+Top-3 results for query refugee in the diversified system
+
+
 
 Python version:3.6
 
