@@ -16,7 +16,7 @@ against standard information retrieval system, results obtained from user study 
 promising.
 
 ![image](https://user-images.githubusercontent.com/26891940/112000107-f2473f00-8b1d-11eb-94e6-dfc1c48772f3.png)
-Figure 1: Top-3 results for query refugee in the diversified system
+Figure 1: Top-3 results for the query "refugee" in the diversified system
 
 ![image](https://user-images.githubusercontent.com/26891940/112000340-30dcf980-8b1e-11eb-97fa-6252750c35b2.png)
 Figure 2: Semantic differences between document 2 and 3
